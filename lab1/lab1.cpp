@@ -16,7 +16,7 @@ int main()
     system("pause");
     system("cls");
 
-    //TASK 2 ==============================================================================
+    ////TASK 2 ==============================================================================
 
     cout << "Task 2\n";
     double a, //first side
@@ -38,7 +38,7 @@ int main()
     system("pause");
     system("cls");
  
-    //TASK 3 ===============================================================================
+    ////TASK 3 ===============================================================================
 
     cout << "Task 3\n";
     int num; // beginner number
@@ -55,7 +55,7 @@ int main()
     system("pause");
     system("cls");
 
-    //TASK 4 ==============================================================================
+    ////TASK 4 ==============================================================================
 
     cout << "Task 4." << endl;
     int var1,  // first variable
@@ -84,16 +84,17 @@ int main()
     //TASK 5 ==============================================================================
 
     cout << "Task 5." << endl;
-    long double seconds;
-    int years;
+    long seconds;
+    long years;
     cout << "Input the number of years to convert to seconds: ";
-    cin >> a;
-    b = a * 365 * 24 * 60 * 60;
-    cout << "number of seconds in " << a << "   is " << b << endl;
+    cin >> years;
+    seconds = years * 365 * 24 * 60 * 60;
+    cout << "number of seconds in " << years << "   is " << seconds << endl;
 
     system("pause");
     system("cls");
 
+    
     /*cout << "Task 5." << endl;
     cout << "Input the number of years to convert to seconds: ";
     int years;
