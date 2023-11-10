@@ -13,8 +13,13 @@ using namespace std;
 //
 void fun(int mas1[]) {
 
+	HANDLE h;
+	h = GetStdHandle(STD_OUTPUT_HANDLE);
+
 	int mas2[N][M];
+	SetConsoleTextAttribute(h, 3);
 	cout << "Друк ДМ з ОМ: " << endl;
+	SetConsoleTextAttribute(h, 7);
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
 			mas2[i][j] = mas1[i * M + j];
@@ -40,14 +45,23 @@ void fun(int mas1[]) {
 
 	float average = (float)sumMin / N;
 
-	cout << "Середнє значення мiнiмальних значень рядкiв -> : " << average << "\n";
+	SetConsoleTextAttribute(h, 2);
+	cout << "Середнє значення мiнiмальних значень рядкiв -> : ";
+	SetConsoleTextAttribute(h, 5);
+	cout << average << endl;
+	SetConsoleTextAttribute(h, 7);
 }
 void twoArrayProc() { // Two-dimensional array processing
+
+	HANDLE h;
+	h = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	setlocale(LC_ALL, "rus");
 
 	int mas1[N * M] = { 4, 6 ,9 ,2, 6 , 8 ,9, 5 ,7 };
+	SetConsoleTextAttribute(h, 3);
 	cout << "Одновимiрний масив ->: ";
+	SetConsoleTextAttribute(h, 7);
 	for (int i = 0; i < N * M; i++) {
 		cout << setw(4) << mas1[i];
 	}
@@ -56,7 +70,9 @@ void twoArrayProc() { // Two-dimensional array processing
 
 	fun(mas1);
 
+	SetConsoleTextAttribute(h, 3);
 	cout << endl << "Одновимiрний масив (пiсля функцiї) ->: ";
+	SetConsoleTextAttribute(h, 7);
 	for (int i = 0; i < N * M; i++) {
 		cout << setw(4) << mas1[i];
 	}
@@ -79,26 +95,53 @@ char enteredNumbers(int a, int b) {
 }
 void comparisonArray() {
 
+	HANDLE h;
+	h = GetStdHandle(STD_OUTPUT_HANDLE);
+
 	setlocale(LC_ALL, "rus");
 
 	int num1,
 		num2;
-
+	cout << endl;
+	SetConsoleTextAttribute(h, 3);
 	cout << "Введiть перше число ->: ";
+	SetConsoleTextAttribute(h, 5);
 	cin >> num1;
+	SetConsoleTextAttribute(h, 3);
 	cout << "Введiть друге число ->: ";
+	SetConsoleTextAttribute(h, 5);
 	cin >> num2;
+	SetConsoleTextAttribute(h, 7);
 
 	char result = enteredNumbers(num1, num2);
-	cout << num1 << " " << result << " " << num2 << endl;
+	SetConsoleTextAttribute(h, 5);
+	cout << num1;
+	SetConsoleTextAttribute(h, 7);
+	cout << " "; 
+	SetConsoleTextAttribute(h, 2);
+	cout << result;
+	SetConsoleTextAttribute(h, 7);
+	cout << " "; 
+	SetConsoleTextAttribute(h, 5);
+	cout << num2 << endl;
+	SetConsoleTextAttribute(h, 7);
 }
 //
 
 //
 void fillArray(int arr[N][M]) {
+
+	HANDLE h;
+	h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	cout << endl;
+
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
-			cout << "Введiть елемент [" << i << "][" << j << "]: ";
+			SetConsoleTextAttribute(h, 3);
+			cout << "Введiть елемент ";
+			SetConsoleTextAttribute(h, 7);
+			cout << "[" << i << "][" << j << "]: ";
 			cin >> arr[i][j];
 		}
 	}
@@ -121,17 +164,30 @@ int sumPositiveElementsInRow(int arr[], int size) {
 	return sum;
 }
 void functionArray(){ //functionTwoDimensionalArray
+	
+	HANDLE h;
+	h = GetStdHandle(STD_OUTPUT_HANDLE);
+	
 	setlocale(LC_ALL, "rus");
 	int arr[N][M];
 
 	fillArray(arr);
-
+	SetConsoleTextAttribute(h, 2);
 	cout << "Двовимiрний масив:" << endl;
+	SetConsoleTextAttribute(h, 7);
 	printArray(arr);
 
 	for (int i = 0; i < N; i++) {
 		int sum = sumPositiveElementsInRow(arr[i], M);
-		cout << "Сума позитивних елементiв в рядку " << i << ": " << sum << endl;
+		SetConsoleTextAttribute(h, 2);
+		cout << "Сума позитивних елементiв в рядку "; 
+		SetConsoleTextAttribute(h, 5);
+		cout << i; 
+		SetConsoleTextAttribute(h, 7);
+		cout << ": ";
+		SetConsoleTextAttribute(h, 1);
+		cout<< sum << endl;
+		SetConsoleTextAttribute(h, 7);
 	}
 }
 //
@@ -150,7 +206,7 @@ void StartMenu() {
 
 	HANDLE h;
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_FONT_INFOEX fontInfo;
+	
 	
 	
 	
