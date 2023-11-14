@@ -1,49 +1,69 @@
-﻿//#include <iostream>
-//
-//int main() {
-//    const int size = 5; // Розмір квадратної матриці
-//
-//    // Створення та ініціалізація квадратної матриці розміром size x size
-//    int matrix[size][size] = { 0 };
-//
-//    // Заповнення сектора вище та нижче головної діагоналі
-//    for (int i = 0; i < size; i++) {
-//        for (int j = 0; j < size; j++) {
-//            if (j > i) {
-//                matrix[i][j] = 1; // Встановлюємо значення 1 у секторі вище головної діагоналі
-//            }
-//            else if (j < i) {
-//                matrix[i][j] = -1; // Встановлюємо значення -1 у секторі нижче головної діагоналі
-//            }
-//        }
-//    }
-//
-//    // Виведення матриці
-//    for (int i = 0; i < size; i++) {
-//        for (int j = 0; j < size; j++) {
-//            std::cout << matrix[i][j] << " ";
-//        }
-//        std::cout << std::endl;
-//    }
-//}
-
-#include <iostream>
-#include <string>
+﻿#include <iostream>
 #include <iomanip>
-#include <windows.h>
 #include <cstdlib>
-#include <stdio.h>
+#include <ctime>
 
-setlocale(LC_ALL, "rus");
+void processArray(int* inputArray, int size) {
+    int* positiveElements = new int[size];
+    int positiveCount = 0;
+
+    for (int i = 1; i < size - 1; ++i) {
+        if (inputArray[i] < inputArray[i - 1] && inputArray[i] < inputArray[i + 1]) {
+            std::cout << "Елемент " << inputArray[i] << " менший за попередній та наступний." << std::endl;
+            inputArray[i] *= -1;  // Позначаємо підсвічуваний елемент (можна використати інші маркери)
+        }
+        if (inputArray[i] > 0) {
+            positiveElements[positiveCount] = inputArray[i];
+            positiveCount++;
+        }
+    }
+
+    std::cout << "Одновимірний масив з позитивними та підсвіченими елементами:";
+    for (int i = 0; i < size; ++i) {
+        if (inputArray[i] < 0) {
+            std::cout << " \033[1;31m" << -inputArray[i] << "\033[0m";  // Відновлюємо позитивне значення
+        }
+        else {
+            std::cout << " " << inputArray[i];
+        }
+    }
+    std::cout << std::endl;
+
+    std::cout << "Одновимірний масив з позитивними елементами:";
+    for (int i = 0; i < positiveCount; ++i) {
+        std::cout << " " << positiveElements[i];
+    }
+    std::cout << std::endl;
+
+    delete[] positiveElements;
+}
 
 int main() {
-    std::string text = "Ваш текст";
+    setlocale(LC_ALL, "rus");
+    int size;
+    std::cout << "Введіть кількість елементів ->: ";
+    std::cin >> size;
 
-    // Зміна розміру тексту
-    text.resize(44);
+    if (size < 3) {
+        std::cout << "Некоректний ввід. Кількість елементів повинна бути мінімум 3";
+        return 1;
+    }
 
-    std::cout << text << std::endl;
+    int* inputArray = new int[size];
+
+    srand(time(NULL));
+    for (int i = 0; i < size; i++) {
+        inputArray[i] = rand() % 21 - 10;
+    }
+
+    for (int i = 0; i < size; i++) {
+        std::cout << inputArray[i] << std::setw(4);
+    }
+    std::cout << std::endl;
+
+    processArray(inputArray, size);
+
+    delete[] inputArray;
 
     return 0;
 }
-
