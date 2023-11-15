@@ -7,26 +7,23 @@
 using namespace std;
 
 void fillingArray(int* inputArray, int size) {
-
 	HANDLE h;
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
-
 
 	int* positiveElements = new int[size];
 	int positiveCount = 0;
 
-
 	for (int i = 1; i < size - 1; ++i) {
-		if (inputArray[i] < inputArray[i - 1] && inputArray[i] < inputArray[i + 1]) {
+		if (*(inputArray + i) < *(inputArray + i - 1) && *(inputArray + i) < *(inputArray + i + 1)) {
 			cout << "Елемент ";
 			SetConsoleTextAttribute(h, 2);
-			cout << inputArray[i];
+			cout << *(inputArray + i);
 			SetConsoleTextAttribute(h, 7);
-			cout<< " менший за попереднiй та наступний." << endl;
+			cout << " менший за попереднiй та наступний." << endl;
 		}
 
-		if (inputArray[i] > 0) {
-			positiveElements[positiveCount] = inputArray[i];
+		if (*(inputArray + i) > 0) {
+			*(positiveElements + positiveCount) = *(inputArray + i);
 			positiveCount++;
 		}
 	}
@@ -35,11 +32,11 @@ void fillingArray(int* inputArray, int size) {
 	cout << "Новий динамiчний масив з позитивними елементами ->: ";
 	SetConsoleTextAttribute(h, 7);
 	for (int i = 0; i < positiveCount; ++i) {
-		cout << positiveElements[i] <<setw(4);
+		cout << *(positiveElements + i) << setw(4);
 	}
 	cout << endl;
 	SetConsoleTextAttribute(h, 3);
-	cout << endl <<"Кiлькiсть позитивних елементiв ->: ";
+	cout << endl << "Кiлькiсть позитивних елементiв ->: ";
 	SetConsoleTextAttribute(h, 2);
 	cout << positiveCount << endl;
 	SetConsoleTextAttribute(h, 7);
@@ -63,7 +60,7 @@ void countPositivElements() {
 
 	if (size < 3) {
 		SetConsoleTextAttribute(h, 4);
-		cout << "Некоректний ввiд. Кiлькiсть елементiв повинна бути мiнiмум 3." <<endl;
+		cout << "Некоректний ввiд. Кiлькiсть елементiв повинна бути мiнiмум 3." << endl;
 		SetConsoleTextAttribute(h, 7);
 		return;
 	}
@@ -72,21 +69,17 @@ void countPositivElements() {
 
 	srand(time(NULL));
 	for (int i = 0; i < size; i++) {
-		inputArray[i] = rand() % 21 - 10;
+		*(inputArray + i) = rand() % 21 - 10;
 	}
 
 	for (int i = 0; i < size; i++) {
-		cout << inputArray[i] << setw(4);
+		cout << *(inputArray + i) << setw(4);
 	}
 	cout << endl;
-
-	
-	
 
 	fillingArray(inputArray, size);
 
 	delete[] inputArray;
-
 }
 
 void gotoxy(int x, int y) {

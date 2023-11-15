@@ -17,9 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab5", "lab5\lab5.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab6", "lab6\lab6.vcxproj", "{704D8929-4E7E-4660-8F38-9C8D86AF7F08}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "using coordinates", "using coordinates\using coordinates.vcxproj", "{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "labConsole", "labConsole\labConsole.vcxproj", "{FE78A44A-5C67-4FAD-A698-4662FB2102B6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "РГЗ", "labConsole\labConsole.vcxproj", "{FE78A44A-5C67-4FAD-A698-4662FB2102B6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab7", "lab7\lab7.vcxproj", "{51311075-F14F-421E-A4DE-DCCA2A700197}"
 EndProject
@@ -89,14 +87,6 @@ Global
 		{704D8929-4E7E-4660-8F38-9C8D86AF7F08}.Release|x64.Build.0 = Release|x64
 		{704D8929-4E7E-4660-8F38-9C8D86AF7F08}.Release|x86.ActiveCfg = Release|Win32
 		{704D8929-4E7E-4660-8F38-9C8D86AF7F08}.Release|x86.Build.0 = Release|Win32
-		{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}.Debug|x64.ActiveCfg = Debug|x64
-		{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}.Debug|x64.Build.0 = Debug|x64
-		{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}.Debug|x86.ActiveCfg = Debug|Win32
-		{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}.Debug|x86.Build.0 = Debug|Win32
-		{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}.Release|x64.ActiveCfg = Release|x64
-		{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}.Release|x64.Build.0 = Release|x64
-		{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}.Release|x86.ActiveCfg = Release|Win32
-		{5C6BFA5B-44B7-4B9B-A640-D90B7A526277}.Release|x86.Build.0 = Release|Win32
 		{FE78A44A-5C67-4FAD-A698-4662FB2102B6}.Debug|x64.ActiveCfg = Debug|x64
 		{FE78A44A-5C67-4FAD-A698-4662FB2102B6}.Debug|x64.Build.0 = Debug|x64
 		{FE78A44A-5C67-4FAD-A698-4662FB2102B6}.Debug|x86.ActiveCfg = Debug|Win32
