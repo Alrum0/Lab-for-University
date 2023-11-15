@@ -34,16 +34,43 @@ namespace labConsole {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ lbl_titlerez;
-	private: System::Windows::Forms::Label^ lbl_rez;
-	private: System::Windows::Forms::GroupBox^ gb_spp_types;
-	private: System::Windows::Forms::RadioButton^ rb_short;
-	private: System::Windows::Forms::RadioButton^ rb_double;
+	private: System::Windows::Forms::Label^ label1;
+	protected:
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button3;
 
-	private: System::Windows::Forms::RadioButton^ rb_float;
-	private: System::Windows::Forms::RadioButton^ rb_char;
-	private: System::Windows::Forms::RadioButton^ rb_long;
-	private: System::Windows::Forms::Button^ btn_close;
+	protected:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	protected:
@@ -66,167 +93,147 @@ namespace labConsole {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->lbl_titlerez = (gcnew System::Windows::Forms::Label());
-			this->lbl_rez = (gcnew System::Windows::Forms::Label());
-			this->gb_spp_types = (gcnew System::Windows::Forms::GroupBox());
-			this->rb_double = (gcnew System::Windows::Forms::RadioButton());
-			this->rb_float = (gcnew System::Windows::Forms::RadioButton());
-			this->rb_char = (gcnew System::Windows::Forms::RadioButton());
-			this->rb_long = (gcnew System::Windows::Forms::RadioButton());
-			this->rb_short = (gcnew System::Windows::Forms::RadioButton());
-			this->btn_close = (gcnew System::Windows::Forms::Button());
-			this->gb_spp_types->SuspendLayout();
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// lbl_titlerez
+			// label1
 			// 
-			this->lbl_titlerez->AutoSize = true;
-			this->lbl_titlerez->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbl_titlerez->Location = System::Drawing::Point(30, 31);
-			this->lbl_titlerez->Name = L"lbl_titlerez";
-			this->lbl_titlerez->Size = System::Drawing::Size(139, 29);
-			this->lbl_titlerez->TabIndex = 0;
-			this->lbl_titlerez->Text = L"Size(bytes):";
+			this->label1->Location = System::Drawing::Point(250, 63);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(41, 24);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Ім'я";
+			/*this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);*/
 			// 
-			// lbl_rez
+			// label2
 			// 
-			this->lbl_rez->AutoSize = true;
-			this->lbl_rez->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbl_rez->ForeColor = System::Drawing::SystemColors::Highlight;
-			this->lbl_rez->Location = System::Drawing::Point(457, 10);
-			this->lbl_rez->Name = L"lbl_rez";
-			this->lbl_rez->Size = System::Drawing::Size(24, 55);
-			this->lbl_rez->TabIndex = 1;
-			this->lbl_rez->Text = L"\r\n";
+			this->label2->Location = System::Drawing::Point(250, 115);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(76, 24);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"Пароль";
 			// 
-			// gb_spp_types
+			// pictureBox1
 			// 
-			this->gb_spp_types->Controls->Add(this->rb_double);
-			this->gb_spp_types->Controls->Add(this->rb_float);
-			this->gb_spp_types->Controls->Add(this->rb_char);
-			this->gb_spp_types->Controls->Add(this->rb_long);
-			this->gb_spp_types->Controls->Add(this->rb_short);
-			this->gb_spp_types->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->gb_spp_types->Location = System::Drawing::Point(25, 85);
-			this->gb_spp_types->Name = L"gb_spp_types";
-			this->gb_spp_types->Size = System::Drawing::Size(316, 202);
-			this->gb_spp_types->TabIndex = 2;
-			this->gb_spp_types->TabStop = false;
-			this->gb_spp_types->Text = L"Select type: ";
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->ImageLocation = L"";
+			this->pictureBox1->Location = System::Drawing::Point(33, 53);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(175, 103);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 2;
+			this->pictureBox1->TabStop = false;
 			// 
-			// rb_double
+			// textBox1
 			// 
-			this->rb_double->AutoSize = true;
-			this->rb_double->Location = System::Drawing::Point(7, 174);
-			this->rb_double->Name = L"rb_double";
-			this->rb_double->Size = System::Drawing::Size(95, 29);
-			this->rb_double->TabIndex = 7;
-			this->rb_double->TabStop = true;
-			this->rb_double->Text = L"double";
-			this->rb_double->UseVisualStyleBackColor = true;
-			this->rb_double->Click += gcnew System::EventHandler(this, &MyForm::rb_double_Click);
+			this->textBox1->Location = System::Drawing::Point(368, 68);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(100, 20);
+			this->textBox1->TabIndex = 3;
 			// 
-			// rb_float
+			// textBox2
 			// 
-			this->rb_float->AutoSize = true;
-			this->rb_float->Location = System::Drawing::Point(7, 138);
-			this->rb_float->Name = L"rb_float";
-			this->rb_float->Size = System::Drawing::Size(71, 29);
-			this->rb_float->TabIndex = 6;
-			this->rb_float->TabStop = true;
-			this->rb_float->Text = L"float";
-			this->rb_float->UseVisualStyleBackColor = true;
-			this->rb_float->Click += gcnew System::EventHandler(this, &MyForm::rb_float_Click);
+			this->textBox2->Location = System::Drawing::Point(368, 120);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(100, 20);
+			this->textBox2->TabIndex = 4;
 			// 
-			// rb_char
+			// button1
 			// 
-			this->rb_char->AutoSize = true;
-			this->rb_char->Location = System::Drawing::Point(7, 102);
-			this->rb_char->Name = L"rb_char";
-			this->rb_char->Size = System::Drawing::Size(72, 29);
-			this->rb_char->TabIndex = 5;
-			this->rb_char->TabStop = true;
-			this->rb_char->Text = L"char";
-			this->rb_char->UseVisualStyleBackColor = true;
-			this->rb_char->Click += gcnew System::EventHandler(this, &MyForm::rb_char_Click);
+			this->button1->Location = System::Drawing::Point(394, 198);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(109, 33);
+			this->button1->TabIndex = 5;
+			this->button1->Text = L"Закрити";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
-			// rb_long
+			// button2
 			// 
-			this->rb_long->AutoSize = true;
-			this->rb_long->Location = System::Drawing::Point(10, 66);
-			this->rb_long->Name = L"rb_long";
-			this->rb_long->Size = System::Drawing::Size(71, 29);
-			this->rb_long->TabIndex = 4;
-			this->rb_long->TabStop = true;
-			this->rb_long->Text = L"long";
-			this->rb_long->UseVisualStyleBackColor = true;
-			this->rb_long->Click += gcnew System::EventHandler(this, &MyForm::rb_long_Click);
+			this->button2->Location = System::Drawing::Point(215, 198);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(111, 33);
+			this->button2->TabIndex = 6;
+			this->button2->Text = L"Очистити";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click_1);
 			// 
-			// rb_short
+			// button3
 			// 
-			this->rb_short->AutoSize = true;
-			this->rb_short->Location = System::Drawing::Point(10, 30);
-			this->rb_short->Name = L"rb_short";
-			this->rb_short->Size = System::Drawing::Size(78, 29);
-			this->rb_short->TabIndex = 3;
-			this->rb_short->TabStop = true;
-			this->rb_short->Text = L"short";
-			this->rb_short->UseVisualStyleBackColor = true;
-			this->rb_short->Click += gcnew System::EventHandler(this, &MyForm::rb_short_Click);
-			// 
-			// btn_close
-			// 
-			this->btn_close->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->btn_close->Location = System::Drawing::Point(364, 314);
-			this->btn_close->Name = L"btn_close";
-			this->btn_close->Size = System::Drawing::Size(135, 40);
-			this->btn_close->TabIndex = 3;
-			this->btn_close->Text = L"Exit";
-			this->btn_close->UseVisualStyleBackColor = true;
-			this->btn_close->Click += gcnew System::EventHandler(this, &MyForm::btn_close_Click);
+			this->button3->Location = System::Drawing::Point(33, 198);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(106, 33);
+			this->button3->TabIndex = 7;
+			this->button3->Text = L"ОК";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(531, 367);
-			this->Controls->Add(this->btn_close);
-			this->Controls->Add(this->gb_spp_types);
-			this->Controls->Add(this->lbl_rez);
-			this->Controls->Add(this->lbl_titlerez);
+			this->BackColor = System::Drawing::SystemColors::Window;
+			this->ClientSize = System::Drawing::Size(531, 245);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"MyForm";
-			this->Text = L"lab1. task1";
-			this->gb_spp_types->ResumeLayout(false);
-			this->gb_spp_types->PerformLayout();
+			this->Text = L"User forms";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void btn_close_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+		this->textBox1->Text = "";
+		this->textBox2->Text = "";
+	}
+
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
-	private: System::Void rb_short_Click(System::Object^ sender, System::EventArgs^ e) {
-		lbl_rez->Text = Convert::ToString(sizeof(short));
+
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ correctName = "Alrum";
+		String^ correctPassword = "School 28";
+
+		String^ enteredName = textBox1->Text;
+		String^ enteredPassword = textBox2->Text;
+
+		if (enteredName == correctName && enteredPassword == correctPassword) {
+			MessageBox::Show("Ласкаво просимо, " + enteredName + "! Успішний вхід.");
+		}
+		else {
+			MessageBox::Show("Невірне ім'я користувача чи пароль.");
+		}
 	}
-	private: System::Void rb_long_Click(System::Object^ sender, System::EventArgs^ e) {
-		lbl_rez->Text = Convert::ToString(sizeof(long));
-	}
-	private: System::Void rb_char_Click(System::Object^ sender, System::EventArgs^ e) {
-		lbl_rez->Text = Convert::ToString(sizeof(char));
-	}
-	private: System::Void rb_float_Click(System::Object^ sender, System::EventArgs^ e) {
-		lbl_rez->Text = Convert::ToString(sizeof(float));
-	}
-	private: System::Void rb_double_Click(System::Object^ sender, System::EventArgs^ e) {
-		lbl_rez->Text = Convert::ToString(sizeof(double));
-	}
+
 };
 }
