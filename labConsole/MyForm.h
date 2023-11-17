@@ -229,6 +229,7 @@ namespace labConsole {
 
 		if (enteredName == correctName && enteredPassword == correctPassword) {
 			MessageBox::Show("Ласкаво просимо, " + enteredName + "! Успішний вхід.");
+
 		}
 		else {
 			MessageBox::Show("Невірне ім'я користувача чи пароль.");

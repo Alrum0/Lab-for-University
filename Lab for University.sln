@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab7", "lab7\lab7.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab8", "lab8\lab8.vcxproj", "{EA2F5099-20DB-462C-9899-B99D1C68E757}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "setupRgz", "setupRgz\setupRgz.vdproj", "{C2C61431-B820-4CE2-A88C-EB23DD707EA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -111,6 +113,10 @@ Global
 		{EA2F5099-20DB-462C-9899-B99D1C68E757}.Release|x64.Build.0 = Release|x64
 		{EA2F5099-20DB-462C-9899-B99D1C68E757}.Release|x86.ActiveCfg = Release|Win32
 		{EA2F5099-20DB-462C-9899-B99D1C68E757}.Release|x86.Build.0 = Release|Win32
+		{C2C61431-B820-4CE2-A88C-EB23DD707EA8}.Debug|x64.ActiveCfg = Debug
+		{C2C61431-B820-4CE2-A88C-EB23DD707EA8}.Debug|x86.ActiveCfg = Debug
+		{C2C61431-B820-4CE2-A88C-EB23DD707EA8}.Release|x64.ActiveCfg = Release
+		{C2C61431-B820-4CE2-A88C-EB23DD707EA8}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
