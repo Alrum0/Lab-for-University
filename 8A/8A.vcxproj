@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5c6bfa5b-44b7-4b9b-a640-d90b7a526277}</ProjectGuid>
-    <RootNamespace>usingcoordinates</RootNamespace>
+    <ProjectGuid>{a6cd0e27-0654-4e87-a447-b67116e93964}</ProjectGuid>
+    <RootNamespace>My8A</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="using coordinates.cpp" />
+    <ClCompile Include="8A.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
