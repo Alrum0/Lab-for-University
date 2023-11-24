@@ -59,15 +59,15 @@ int main() {
     SetConsoleTextAttribute(h, 7);
     for (int i = 0; i < size; ++i) {
         A[i] = rand() % 21 - 10; // Генеруємо випадкове число в діапазоні [-10, 10]
-        cout << A[i] << " ";
+        cout << A[i] <<setw(4);
     }
 
-    int B[size];
-    int sizeB;
-    int C[size];
-    int sizeC;
-    int D[size];
-    int sizeD;
+    int B[size],
+        sizeB,
+        C[size],
+        sizeC,
+        D[size],
+        sizeD;
 
     processArray(A, size, B, sizeB, C, sizeC, D, sizeD);
     SetConsoleTextAttribute(h, 2);
