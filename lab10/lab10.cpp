@@ -3,12 +3,12 @@
 
 using namespace std;
 
-#define N 6
+#define N 2
 
 auto averageOfNegativeNum(int arr[], int size, int index = 0, int count = 0, int sum = 0) {
     if (index >= size) {
         if (count == 0) {
-            cout << "У масивi немає вiд'ємних елементiв" << endl;
+            cout << "\nУ масивi немає вiд'ємних елементiв" << endl;
             return 0;
         }
         return sum / count;
