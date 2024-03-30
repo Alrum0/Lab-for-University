@@ -35,10 +35,13 @@ int main() {
 
 		switch (menuitem) {
 		case 1:
-
+			fillStructure();
 			break;
 		case 2:
-
+			
+			break;
+		case 3:
+			printSpaceStructure(galaxy, size);
 			break;
 		case 4:
 			exit(1);
