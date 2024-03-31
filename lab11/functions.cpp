@@ -11,7 +11,9 @@ void gotoxy(int x, int y) {
 
 
 void fillStructure(Space *galaxy, int size) {
-    
+    PRINT_DEBUG_INFO();
+
+
     string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 #if PRINT_TYPE == 1
@@ -42,6 +44,9 @@ void fillStructure(Space *galaxy, int size) {
 }
 
 void sortStructure(Space* galaxy, int size) {
+    PRINT_DEBUG_INFO();
+
+
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - i - 1; j++) {
             if (galaxy[j].spectralClass > galaxy[j + 1].spectralClass) {
@@ -54,7 +59,7 @@ void sortStructure(Space* galaxy, int size) {
 }
 
 void printSpaceStructure(Space* galaxy, int size) {
-
+    PRINT_DEBUG_INFO();
     
 
     cout << "---------------------------------------------------------------------" << endl;

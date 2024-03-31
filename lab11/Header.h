@@ -8,8 +8,21 @@
 
 using namespace std;
 
-#define PRINT_TYPE 2 // 1 - input user, 2 - random generation
 #define distance 16
+
+#define PRINT_TYPE 2 // 1 - input user, 2 - random generation
+#define DEBUG
+
+#ifdef DEBUG
+    #define PRINT_DEBUG_INFO() \
+        cout << "Дата та час: " << __TIME__ << endl; \
+        cout <<"Файл: " << __FILE__ << ", Функцiя: " << __func__ <<endl;
+#else
+    #define PRINT_DEBUG_INFO()
+#endif
+
+
+
 
 
 struct Space {
