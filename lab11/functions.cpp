@@ -42,7 +42,15 @@ void fillStructure(Space *galaxy, int size) {
 }
 
 void sortStructure(Space* galaxy, int size) {
-    // Реалізуйте сортування структури за потреби
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (galaxy[j].spectralClass > galaxy[j + 1].spectralClass) {
+                Space temp = galaxy[j];
+                galaxy[j] = galaxy[j + 1];
+                galaxy[j + 1] = temp;
+            }
+        }
+    }
 }
 
 void printSpaceStructure(Space* galaxy, int size) {
