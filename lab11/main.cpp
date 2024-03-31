@@ -2,6 +2,8 @@
 
 int main() {
 
+	int size = 3;
+	Space galaxy[3];
 
 	setlocale(LC_ALL, "ukr");
 	srand(time(NULL));
@@ -35,10 +37,10 @@ int main() {
 
 		switch (menuitem) {
 		case 1:
-			fillStructure();
+			fillStructure(galaxy, size);
 			break;
 		case 2:
-			
+			sortStructure(galaxy, size);
 			break;
 		case 3:
 			printSpaceStructure(galaxy, size);
