@@ -13,17 +13,16 @@ void searchSumBetweenNegativeNum() {
     int size;
 
 #if PRINT_TYPE == 1
-    cout << "Введіть розмір масиву: ";
+    cout << "Введiть розмiр масиву: ";
     cin >> size;
-
     if (size <= 0) {
-        cout << "Розмір масиву повинен бути більшим за 0." << endl;
+        cout << "Розмiр масиву повинен бути бiльшим за 0." << endl;
         return;
     }
 
     int* arr = new int[size];
 
-    cout << "Введіть елементи масиву: ";
+    cout << "Введiть елементи масиву: ";
     for (int i = 0; i < size; i++) {
         cin >> arr[i];
     }
@@ -32,14 +31,15 @@ void searchSumBetweenNegativeNum() {
     
     srand(time(NULL));
 
-    cout << "Введіть розмір масиву: ";
+    cout << "Введiть розмiр масиву: ";
     cin >> size;
 
     if (size <= 0) {
-        cout << "Розмір масиву повинен бути більшим за 0." << endl;
+        cout << "Розмiр масиву повинен бути бiльшим за 0." << endl;
         return;
     }
 
+ 
 
     int* arr = new int[size];
     for (int i = 0; i < size; i++) {
@@ -67,11 +67,17 @@ void searchSumBetweenNegativeNum() {
         }
     }
 
-    if (firstNegativeNumber != nullptr && secondNegativeNumber != nullptr) {
+    /*if (firstNegativeNumber != nullptr && secondNegativeNumber != nullptr) {
+        for (int* ptr = firstNegativeNumber + 1; ptr < secondNegativeNumber; ptr++) {
+            sum += *ptr;
+        }
+    }*/
+    if (firstNegativeNumber != nullptr && secondNegativeNumber != nullptr && secondNegativeNumber > firstNegativeNumber + 1) {
         for (int* ptr = firstNegativeNumber + 1; ptr < secondNegativeNumber; ptr++) {
             sum += *ptr;
         }
     }
+
 
 
     for (int i = 0; i < size; i++) {
@@ -79,7 +85,77 @@ void searchSumBetweenNegativeNum() {
     }
     cout << endl;
 
-    cout << "Сума між першим і другим від'ємними числами: " << sum << endl;
+    cout << "Сума мiж першим i другим вiд'ємними числами: " << sum << endl;
+
+    delete[] arr;
+}
+
+
+void searchSumBetweenNegativeNum2() {
+    int size;
+
+#if PRINT_TYPE == 1
+    cout << "Введiть розмiр масиву: ";
+    cin >> size;
+    if (size <= 0) {
+        cout << "Розмiр масиву повинен бути бiльшим за 0." << endl;
+        return;
+    }
+
+    int* arr = new int[size];
+
+    cout << "Введiть елементи масиву: ";
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+
+#elif PRINT_TYPE == 2
+
+    srand(time(NULL));
+
+    cout << "Введiть розмiр масиву: ";
+    cin >> size;
+
+    if (size <= 0) {
+        cout << "Розмiр масиву повинен бути бiльшим за 0." << endl;
+        return;
+    }
+
+    int* arr = new int[size];
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 41 - 20;
+    }
+
+#endif
+
+    int& firstNegativeNumberIndex = size; 
+    int& secondNegativeNumberIndex = size; 
+    int sum = 0;
+
+    for (int i = 0; i < size; i++) {
+        if (arr[i] < 0) {
+            if (firstNegativeNumberIndex == size) {
+                firstNegativeNumberIndex = i;
+            }
+            else {
+                secondNegativeNumberIndex = i;
+                break;
+            }
+        }
+    }
+
+    if (firstNegativeNumberIndex != size && secondNegativeNumberIndex != size) {
+        for (int i = firstNegativeNumberIndex + 1; i < secondNegativeNumberIndex; i++) {
+            sum += arr[i];
+        }
+    }
+
+    for (int i = 0; i < size; i++) {
+        cout << setw(7) << arr[i];
+    }
+    cout << endl;
+
+    cout << "Сума мiж першим i другим вiд'ємними числами: " << sum << endl;
 
     delete[] arr;
 }

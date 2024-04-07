@@ -31,7 +31,11 @@ void switchMenuTask() {
 
 		switch (menuitem) {
 		case 1:
+#if CHOISE == 1
 			searchSumBetweenNegativeNum();
+#elif CHOISE == 2
+			searchSumBetweenNegativeNum2();
+#endif
 			break;
 		case 2:
 			
