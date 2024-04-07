@@ -3,6 +3,10 @@
 
 void switchMenuTask() {
 	int menuitem;
+	int width;
+	int lenght;
+	int area;
+	int num1, num2, num3;
 
 	HANDLE h;
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -18,8 +22,8 @@ void switchMenuTask() {
 
 		SetConsoleTextAttribute(h, 3);
 		cout << endl << "1. Завдвдання 1. Рахування суми" << endl;
-		cout << "2. Сортування структури" << endl;
-		cout << "3. Друк структури" << endl;
+		cout << "2. Завдання 2. Розрахунок площi" << endl;
+		cout << "3. Завдання 3. Змiна мiсцями максимальне i мiнiмальне значення" << endl;
 		SetConsoleTextAttribute(h, 4);
 		cout << "4. Вихiд" << endl;
 		SetConsoleTextAttribute(h, 7);
@@ -39,9 +43,24 @@ void switchMenuTask() {
 			break;
 		case 2:
 			
+			cout << "Введіть ширину: ";
+			cin >> width;
+			cout << "Введіть висоту: ";
+			cin >> lenght;
+
+	
+
+			area = searchArea(lenght, width);
+			cout << "Площа: " << area;
+
 			break;
 		case 3:
-			
+			cout << "Введiть 3 числа: ";
+			cin >> num1 >> num2 >> num3;
+
+			cout << "До свапу чисел: Число 1 = " << num1 << ", Число 2 = " << num2 << ", Число 3 = " << num3 << endl;
+			swapMaxMinNumberRef(num1, num2, num3);
+			cout << "Пiсля свапу чисел: Число 1 = " << num1 << ", Число 2 = " << num2 << ", Число 3 = " << num3;
 			break;
 		case 4:
 

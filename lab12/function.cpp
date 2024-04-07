@@ -89,8 +89,6 @@ void searchSumBetweenNegativeNum() {
 
     delete[] arr;
 }
-
-
 void searchSumBetweenNegativeNum2() {
     int size;
 
@@ -159,4 +157,41 @@ void searchSumBetweenNegativeNum2() {
     cout << "—ума мiж першим i другим вiд'Їмними числами: " << sum << endl;
 
     delete[] arr;
+}
+
+
+int searchArea(int lenght, int width = -1) {
+    if (width == -1) {
+        return lenght * lenght;
+    }
+    else {
+        return lenght * width;
+    }
+}
+
+void swapMaxMinNumberRef(int& a, int& b, int& c) {
+    int minVal = a, maxVal = a;
+    int* minPtr = &a, * maxPtr = &a;
+
+    if (b < minVal) { minVal = b; minPtr = &b; }
+    else if (b > maxVal) { maxVal = b; maxPtr = &b; }
+
+    if (c < minVal) { minVal = c; minPtr = &c; }
+    else if (c > maxVal) { maxVal = c; maxPtr = &c; }
+
+    *minPtr = maxVal;
+    *maxPtr = minVal;
+} 
+void swapMaxMinNumberPtr(int *a, int *b, int *c) {
+    int minVal = *a, maxVal = *a;
+    int* minPtr = a, * maxPtr = a;
+
+    if (*b < minVal) { minVal = *b; minPtr = b; }
+    else if (*b > maxVal) { maxVal = *b; maxPtr = b; }
+
+    if (*c < minVal) { minVal = *c; minPtr = c; }
+    else if (*c > maxVal) { maxVal = *c; maxPtr = c; }
+
+    *minPtr = maxVal;
+    *maxPtr = minVal;
 }
