@@ -10,7 +10,7 @@ using namespace std;
 
 #define distance 16
 
-#define PRINT_TYPE 2 // 1 - input user, 2 - random generation
+#define PRINT_TYPE 1 // 1 - input user, 2 - random generation
 #define DEBUG
 
 #ifdef DEBUG
@@ -20,8 +20,6 @@ using namespace std;
 #else
     #define PRINT_DEBUG_INFO()
 #endif
-
-
 
 
 
