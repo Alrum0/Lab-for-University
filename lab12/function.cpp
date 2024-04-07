@@ -144,11 +144,12 @@ void searchSumBetweenNegativeNum2() {
         }
     }
 
-    if (firstNegativeNumberIndex != size && secondNegativeNumberIndex != size) {
+    if (firstNegativeNumberIndex != size && secondNegativeNumberIndex != size && secondNegativeNumberIndex > firstNegativeNumberIndex + 1) {
         for (int i = firstNegativeNumberIndex + 1; i < secondNegativeNumberIndex; i++) {
             sum += arr[i];
         }
     }
+
 
     for (int i = 0; i < size; i++) {
         cout << setw(7) << arr[i];
