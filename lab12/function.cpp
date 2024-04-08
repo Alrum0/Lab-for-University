@@ -67,14 +67,11 @@ void searchSumBetweenNegativeNum() {
         }
     }
 
-    /*if (firstNegativeNumber != nullptr && secondNegativeNumber != nullptr) {
-        for (int* ptr = firstNegativeNumber + 1; ptr < secondNegativeNumber; ptr++) {
-            sum += *ptr;
-        }
-    }*/
+   
     if (firstNegativeNumber != nullptr && secondNegativeNumber != nullptr && secondNegativeNumber > firstNegativeNumber + 1) {
         for (int* ptr = firstNegativeNumber + 1; ptr < secondNegativeNumber; ptr++) {
             sum += *ptr;
+            
         }
     }
 
@@ -98,6 +95,7 @@ void searchSumBetweenNegativeNum() {
 
     delete[] arr;
 }
+
 void searchSumBetweenNegativeNum2() {
     int size;
 

@@ -53,9 +53,9 @@ void switchMenuTask() {
 			break;
 		case 2:
 			
-			cout << "Введіть ширину: ";
+			cout << "Введiть ширину: ";
 			cin >> width;
-			cout << "Введіть висоту: ";
+			cout << "Введiть висоту: ";
 			cin >> lenght;
 
 	
@@ -74,7 +74,7 @@ void switchMenuTask() {
 			break;
 		case 4:
 
-			cout << "Введіть розмір матриці (n x m):";
+			cout << "Введiть розмiр матрицi (n x m):";
 			cin >> n >> m;
 
 			A = new int* [n];
@@ -99,8 +99,21 @@ void switchMenuTask() {
 			res = f(A, n, m, min, max, &S, &P);
 
 
-			cout << "Сума на головнiй діагоналi: " << res[0] << endl;
+			cout << "Сума на головнiй дiагоналi: " << res[0] << endl;
 			cout << "Добуток на побiчнiй дiагоналi: " << res[1] << endl;
+
+			cout << "Мiнiмальнi елементи в кожному стовпцi:" <<endl;
+			for (int j = 0; j < m; j++) {
+				cout << setw(5) << min[j];
+			}
+			cout << endl;
+
+			cout << "Максимальнi елементи в кожному рядку:" << endl;
+			for (int i = 0; i < n; i++) {
+				cout << setw(5) << max[i] << endl;;
+			}
+			cout << endl;
+
 			break;
 		case 5:
 
