@@ -10,6 +10,7 @@ void gotoxy(int x, int y) {
 
 void searchSumBetweenNegativeNum() {
     
+    int uwu = 0;
     int size;
 
 #if PRINT_TYPE == 1
@@ -71,7 +72,7 @@ void searchSumBetweenNegativeNum() {
     if (firstNegativeNumber != nullptr && secondNegativeNumber != nullptr && secondNegativeNumber > firstNegativeNumber + 1) {
         for (int* ptr = firstNegativeNumber + 1; ptr < secondNegativeNumber; ptr++) {
             sum += *ptr;
-            
+            uwu++;
         }
     }
 
@@ -92,6 +93,7 @@ void searchSumBetweenNegativeNum() {
 
 
     cout << "Сума мiж першим i другим вiд'ємними числами: " << sum << endl;
+    cout << "Кiлькiсть елементiв: " << uwu <<endl;
 
     delete[] arr;
 }
