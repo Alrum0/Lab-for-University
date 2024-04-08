@@ -13,15 +13,18 @@ using namespace std;
 #define CHOISE 1 // 1. using indx, 2. using link
 
 
+typedef int (*func_ptr)(int arr[], int a);
 
 void switchMenuTask();
 void gotoxy(int x, int y);
 void searchSumBetweenNegativeNum();
 void searchSumBetweenNegativeNum2();
-int searchArea(int lenght, int width);
 void swapMaxMinNumberRef(int& a, int& b, int& c);
 void swapMaxMinNumberPtr(int* a, int* b, int* c);
-
+int f(int lenght, int width);
+int* f(int** A, int n, int m, int* min, int* max, int* S, int* P);
+int sumPositiveNum(int arr[], int a);
+int productNegativeNum(int arr[], int a);
 
 
 #endif 

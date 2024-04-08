@@ -160,7 +160,7 @@ void searchSumBetweenNegativeNum2() {
 }
 
 
-int searchArea(int lenght, int width = -1) {
+int f(int lenght, int width = -1) {
     if (width == -1) {
         return lenght * lenght;
     }
@@ -195,3 +195,59 @@ void swapMaxMinNumberPtr(int *a, int *b, int *c) {
     *minPtr = maxVal;
     *maxPtr = minVal;
 }
+
+int* f(int** A, int n, int m, int* min, int* max, int* S, int* P) {
+    for (int j = 0; j < m; j++) {
+        min[j] = A[0][j];
+        for (int i = 1; i < n; i++) {
+            if (A[i][j] < min[j]) {
+                min[j] = A[i][j];
+            }
+        }
+    }
+
+    for (int i = 0; i < n; ++i) {
+        max[i] = A[i][0];
+        for (int j = 1; j < m; ++j) {
+            if (A[i][j] > max[i]) {
+                max[i] = A[i][j];
+            }
+        }
+    }
+
+    *S = 0;
+    *P = 1;
+    for (int i = 0; i < n; i++) {
+        *S += A[i][i];
+        *P *= A[i][m - 1 - i];
+    }
+
+    int* res = new int[2];
+    res[0] = *S;
+    res[1] = *P;
+    return res;
+
+}
+
+int sumPositiveNum(int arr[], int a) {
+    int sum = 0;
+
+    for (int i = 0; i < a; i++) {
+        if (arr[i] > 0) {
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
+int productNegativeNum(int arr[], int a) {
+    int product = 1;
+
+    for (int i = 0; i < a; i++) {
+        if (arr[i] < 0) {
+            product *= arr[i];
+        }
+    }
+    return product;
+}
+
+
