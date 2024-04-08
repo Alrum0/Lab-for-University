@@ -79,11 +79,20 @@ void searchSumBetweenNegativeNum() {
     }
 
 
-
     for (int i = 0; i < size; i++) {
-        cout << setw(5) <<arr[i];
+        if (arr[i] < 0) {
+            cout << "\033[31m";
+            if (&arr[i] != firstNegativeNumber && &arr[i] != secondNegativeNumber) {
+                cout << setw(5) << arr[i];
+                cout << "\033[0m";
+                continue;
+            }
+        }
+        cout << setw(5) << arr[i];
+        cout << "\033[0m";
     }
     cout << endl;
+
 
     cout << "—ума мiж першим i другим вiд'Їмними числами: " << sum << endl;
 
