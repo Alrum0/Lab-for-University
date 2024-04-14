@@ -17,7 +17,7 @@ void Space::showUp() {
 }
 void Space::show() {
     for (int i = 0; i < N; i++) {
-        cout << "|" << setw(distance) << getSpectralClass() << "|" << setw(distance) << getMass() << "|" << setw(distance) << getPart() << "|" << setw(distance) << getNum() << "|" << endl;
+        cout << "|" << setw(distance) << getSpectralClass << "|" << setw(distance) << getMass << "|" << setw(distance) << getPart << "|" << setw(distance) << getNum << "|" << endl;
         cout << "---------------------------------------------------------------------" << endl;
     }
 }
@@ -25,12 +25,6 @@ void Space::showDown() {
     cout << "|" << "         Примiтка: не показанi данi для класiв: B, A, G, K         " << "|"; cout << endl;
     cout << "---------------------------------------------------------------------" << endl;
 }
-
-
-
-
-
-
 void gotoxy(int x, int y) {
     COORD crds;
     crds.X = x;
