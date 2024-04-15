@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#define distance 16
+#define distance 19
 #define N 3
 
 void switchMenuTask();
@@ -23,18 +23,24 @@ private:
 	long num;
 public:
 	char getSpectralClass();
-	float getMass();
-	float getPart();
-	auto getNum();
-
 	void setSpectralClass(char SpectralClass);
-	void setMass(float mass);
-	void setPart(float part);
-	void setNum(long num);
 
+	float getMass();
+	void setMass(float mass);
+
+	float getPart();
+	void setPart(float part);
+
+	auto getNum();
+	void setNum(long num);
+	
 	void showUp();
 	void showDown();
 	void show();
+
+	void input();
+
+	/*Space(char spectralClass = 'M', float mass = 0.2, double part = 73.2, long num = 23000000);*/
 };
 
 
