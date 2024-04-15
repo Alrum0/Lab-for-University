@@ -40,8 +40,25 @@ public:
 
 	void input();
 
-	/*Space(char spectralClass = 'M', float mass = 0.2, double part = 73.2, long num = 23000000);*/
+	Space() : spectralClass('A'), mass(0), part(0), num(0) {}; //конструктор за умовченням
+	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};// конструктор з аргументами
+	Space(const Space& other) : spectralClass(other.spectralClass), mass(other.mass), part(other.part), num(other.num) {}; //конструктор копіювання
 };
+
+class Figure {
+private:
+	float radius;
+	const double PI = 3.14159;
+	float height;
+	float l;
+public:
+	double circleArea() const;
+	double triangleArea() const;
+
+	Figure(double r = 0, double h = 0, double b = 0) : radius(r), height(h), l(b) {}
+
+};
+
 
 
 #endif 

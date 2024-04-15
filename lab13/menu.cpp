@@ -7,7 +7,12 @@ void switchMenuTask() {
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	int menuitem;
+	Space spaces[N];
+	char spectralClass;
+	float mass, part;
+	long num;
 
+	double radius, triangleHeight, trianglel;
 
 	do {
 		gotoxy(65, 0);
@@ -31,9 +36,46 @@ void switchMenuTask() {
 
 		switch (menuitem) {
 		case 1:
+			
+			for (int i = 0; i < N; i++) {
+				cout << "¬ведiть спектральний клас: ";
+				cin >> spectralClass;
+				cout << "¬ведiть масу: ";
+				cin >> mass;
+				cout << "¬ведiть частку: ";
+				cin >> part;
+				cout << "¬ведiть кiлькiсть: ";
+				cin >> num;
 
+				spaces[i].setSpectralClass(spectralClass);
+				spaces[i].setMass(mass);
+				spaces[i].setPart(part);
+				spaces[i].setNum(num);
+			}
+
+			spaces[0].showUp();
+
+			for (int i = 0; i < N; i++) {
+				spaces[i].show();
+			}
+
+			spaces[0].showDown();
 			break;
 		case 2:
+			cout << "¬вед≥ть рад≥ус круга: ";
+			cin >> radius;
+
+			cout << "¬вед≥ть висоту трикутника: ";
+			cin >> triangleHeight;
+
+			cout << "¬вед≥ть основу трикутника: ";
+			cin >> trianglel;
+
+			Figure kr(radius);
+			cout << "ѕлоща круга: " << kr.circleArea() << endl;
+
+			Figure tr(triangleHeight, trianglel);
+			cout << "ѕлоща трикутника: " << tr.triangleArea() << endl;
 
 
 			break;
