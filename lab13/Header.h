@@ -99,6 +99,7 @@ private:
 	const int ID;
 	Dog* dogs;
 	int dogCount;
+	Master* owner1;
 public:
 	static int count;
 
@@ -114,6 +115,7 @@ public:
 	void addToOwner(Master& owner);
 	void removeDogFromOwner(Master& owner);
 
+	void menuDog(Master& owner);
 
 };
 

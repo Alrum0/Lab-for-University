@@ -106,6 +106,8 @@ void Master::removeDogFromOwner(Master& owner){
     owner.removeDog(index);
 }
 
+
+
 void gotoxy(int x, int y) {
     COORD crds;
     crds.X = x;
