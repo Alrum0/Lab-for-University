@@ -23,10 +23,7 @@ void switchMenuTask() {
 	Complex num2(2, 3);
 	Complex sum = num1.add(num2);
 
-	Master owner1("John", 1);
-	Master owner2("Alice", 2);
-	Master addDogToOwner(Master& owner);
-	Master removeDogFromOwner(Master& owner);
+	Master owner("John", 1);
 	int choose;
 
 	do {
@@ -36,10 +33,10 @@ void switchMenuTask() {
 
 
 		SetConsoleTextAttribute(h, 3);
-		cout << endl << "1. Завдання 1. Інформативна таблиця" << endl;
+		cout << endl << "1. Завдання 1. Iнформативна таблиця" << endl;
 		cout << "2. Завдання 2. Розрахунок площi" << endl;
 		cout << "3. Завдання 3. Комплекснi числа" << endl;
-		cout << "4. Завдання 3. Собаки" << endl;
+		cout << "4. Завдання 4. Список собак" << endl;
 
 		SetConsoleTextAttribute(h, 4);
 		cout << "7. Вихiд" << endl;
@@ -99,7 +96,43 @@ void switchMenuTask() {
 			sum.print();
 
 			break;
- 
+		case 4:
+
+			int choice;
+			do {
+				cout << "Меню власника собаки:" << endl;
+				cout << "1. Додати собаку" << endl;
+				cout << "2. Видалити собаку" << endl;
+				cout << "3. Переглянути iнформацiю про всiх собак" << endl;
+				cout << "4. Вийти" << endl;
+				cout << "Виберiть опцiю: ";
+				cin >> choice;
+
+				switch (choice) {
+				case 1:
+					cout << "Додавання нової собаки в список" << endl;
+					owner.addToOwner(owner); 
+					break;
+				case 2:
+					cout << "Видалення собаки з списку" << endl;
+					owner.removeDogFromOwner(owner); 
+					break;
+				case 3:
+					cout << "Перегляд iнформацiї про всiх собак у списку" << endl;
+					owner.displayDogs(); 
+					break;
+				case 4:
+					cout << "Вихiд з програми." << endl;
+					break;
+				default:
+					cout << "Некоректний вибір. Будь ласка, спробуйте знову." << endl;
+					break;
+				}
+				system("pause");
+				system("cls");
+			} while (choice != 4);
+
+			break;
 		case 7:
 			exit(1);
 			break;

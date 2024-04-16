@@ -79,9 +79,9 @@ void Master::removeDog(int index) {
     }
 }
 void Master::displayDogs(){
-    cout << "Iм'я господаря собаки: " << name << " (ID: " << ID << " )" << endl;
+    cout << "Iм'я господаря собак: " << name << " (ID: " << ID << " )" << endl;
     for (int i = 0; i < dogCount; i++) {
-        cout << "Iм'я собаки: " << dogs[i].getName() << ", Вага: " << dogs[i].getWeight() << ", Вiк: " << dogs[i].getAge();
+        cout<< i <<". "<< "Iм'я собаки: " << dogs[i].getName() << ", Вага: " << dogs[i].getWeight() << ", Вiк: " << dogs[i].getAge() << endl;
     }
 }
 void Master::addToOwner(Master& owner) {
@@ -89,11 +89,11 @@ void Master::addToOwner(Master& owner) {
     double weight;
     int age;
 
-    std::cout << "Введіть ім'я собаки: ";
+    std::cout << "Введiть iм'я собаки: ";
     std::cin >> name;
-    std::cout << "Введіть вагу собаки: ";
+    std::cout << "Введiть вагу собаки: ";
     std::cin >> weight;
-    std::cout << "Введіть вік собаки: ";
+    std::cout << "Введiть вiк собаки: ";
     std::cin >> age;
 
     Dog newDog(name, weight, age);
@@ -101,7 +101,7 @@ void Master::addToOwner(Master& owner) {
 }
 void Master::removeDogFromOwner(Master& owner){
     int index;
-    cout << "Введіть індекс для виділення: ";
+    cout << "Введiть iндекс для видiлення: ";
     cin >> index;
     owner.removeDog(index);
 }
