@@ -12,7 +12,12 @@ void switchMenuTask() {
 	float mass, part;
 	long num;
 
-	double radius, triangleHeight, trianglel;
+	Figure kr(10);
+	Figure tr(20, 10);
+
+	Complex num1(5, 4);
+	Complex num2(2, 3);
+	Complex sum = num1.add(num2);
 
 	do {
 		gotoxy(65, 0);
@@ -62,25 +67,26 @@ void switchMenuTask() {
 			spaces[0].showDown();
 			break;
 		case 2:
-			cout << "Введіть радіус круга: ";
-			cin >> radius;
 
-			cout << "Введіть висоту трикутника: ";
-			cin >> triangleHeight;
-
-			cout << "Введіть основу трикутника: ";
-			cin >> trianglel;
-
-			Figure kr(radius);
-			cout << "Площа круга: " << kr.circleArea() << endl;
-
-			Figure tr(triangleHeight, trianglel);
+			cout << "Площа кола: " << kr.circleArea() << endl;
 			cout << "Площа трикутника: " << tr.triangleArea() << endl;
-
 
 			break;
 		case 3:
 			
+
+			cout << "Перше комплексне число: ";
+			num1.print();
+			cout << "Друге комплексне число: ";
+			num2.print();
+
+			num1.add(6, 6);
+			cout << "Після додавання: ";
+			num1.print();
+
+			cout << "Сума двох комплексних чисел: ";
+			sum.print();
+
 			break;
 		case 7:
 			exit(1);

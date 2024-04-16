@@ -27,9 +27,18 @@ void Space::showDown() {
     cout << "-----------------------------------------------------------------------------------" << endl;
 }
 
-double Figure::circleArea() const { return PI * radius * radius; }
-double Figure::triangleArea() const { return 0.5 * l * height; }
 
+double Figure::circleArea(){ return 3.14 * radius * radius; }
+double Figure::triangleArea(){ return 0.5 * base * height; }
+
+void Complex::add(int r, int m) { material += m; imaginary += m; }
+void Complex::print(){ cout << material << " + " << imaginary << "i" << endl; }
+
+Complex Complex::add(const Complex& other) {
+    int newmaterial = material + other.material;
+    int newimaginary = imaginary + other.imaginary;
+    return Complex(newmaterial, newimaginary);
+}
 
 void gotoxy(int x, int y) {
     COORD crds;

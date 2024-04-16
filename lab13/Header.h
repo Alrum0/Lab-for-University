@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <Windows.h>
+#include <cmath>
 
 using namespace std;
 
@@ -47,18 +48,29 @@ public:
 
 class Figure {
 private:
-	float radius;
-	const double PI = 3.14159;
-	float height;
-	float l;
+	double radius; 
+	double height; 
+	double base;   
 public:
-	double circleArea() const;
-	double triangleArea() const;
+	
+	Figure(double r) : radius(r), height(0), base(0) {}
+	Figure(double h, double b) : radius(0), height(h), base(b) {}
 
-	Figure(double r = 0, double h = 0, double b = 0) : radius(r), height(h), l(b) {}
+	double circleArea();
 
+	double triangleArea();
 };
 
+class Complex {
+private:
+	int material;
+	int imaginary;
+public:
+	Complex(int m, int i) : material(m), imaginary(i){}
 
+	void add(int r, int m);
+	Complex add(const Complex& othter);
+	void print();
+};
 
 #endif 
