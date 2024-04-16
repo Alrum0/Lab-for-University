@@ -101,11 +101,16 @@ void switchMenuTask() {
 			int choice;
 			do {
 				cout << "Меню власника собаки:" << endl;
+
+				SetConsoleTextAttribute(h, 3);
 				cout << "1. Додати собаку" << endl;
 				cout << "2. Видалити собаку" << endl;
 				cout << "3. Переглянути iнформацiю про всiх собак" << endl;
+				SetConsoleTextAttribute(h, 4);
 				cout << "4. Вийти" << endl;
+				SetConsoleTextAttribute(h, 6);
 				cout << "Виберiть опцiю: ";
+				SetConsoleTextAttribute(h, 7);
 				cin >> choice;
 
 				switch (choice) {

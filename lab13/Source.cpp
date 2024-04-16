@@ -89,12 +89,12 @@ void Master::addToOwner(Master& owner) {
     double weight;
     int age;
 
-    std::cout << "¬ведiть iм'€ собаки: ";
-    std::cin >> name;
-    std::cout << "¬ведiть вагу собаки: ";
-    std::cin >> weight;
-    std::cout << "¬ведiть вiк собаки: ";
-    std::cin >> age;
+    cout << "¬ведiть iм'€ собаки: ";
+    cin >> name;
+    cout << "¬ведiть вагу собаки: ";
+    cin >> weight;
+    cout << "¬ведiть вiк собаки: ";
+    cin >> age;
 
     Dog newDog(name, weight, age);
     owner.addDog(newDog);
