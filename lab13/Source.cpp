@@ -40,6 +40,72 @@ Complex Complex::add(const Complex& other) {
     return Complex(newmaterial, newimaginary);
 }
 
+
+string Dog::getName() { return name; }
+double Dog::getWeight() { return weight; }
+int Dog::getAge() { return age; }
+
+void Dog::setName(string name) { this->name = name; }
+void Dog::setWeight(double weight) { this->weight = weight; }
+void Dog::setAge(int age) { this->age = age; }
+
+int Master::count = 0;
+Master::~Master() { delete[] dogs; }
+int Master::getID() { return ID; }
+void Master::addDog(const Dog& dog) {
+    Dog* temp = new Dog[dogCount + 1];
+    for (int i = 0; i < dogCount; i++) {
+        temp[i] = dogs[i];
+    }
+    temp[dogCount] = dog;
+    delete[] dogs;
+    dogs = temp;
+    dogCount++;
+    count++;
+}
+void Master::removeDog(int index) {
+    if (index >= 0 && index < dogCount) {
+        Dog* temp = new Dog[dogCount - 1];
+        for (int i = 0, j = 0; i < dogCount; ++i) {
+            if (i != index) {
+                temp[j] = dogs[i];
+                j++;
+            }
+        }
+        delete[] dogs;
+        dogs = temp;
+        dogCount--;
+        count--;
+    }
+}
+void Master::displayDogs(){
+    cout << "Iм'я господаря собаки: " << name << " (ID: " << ID << " )" << endl;
+    for (int i = 0; i < dogCount; i++) {
+        cout << "Iм'я собаки: " << dogs[i].getName() << ", Вага: " << dogs[i].getWeight() << ", Вiк: " << dogs[i].getAge();
+    }
+}
+void Master::addToOwner(Master& owner) {
+    string name;
+    double weight;
+    int age;
+
+    std::cout << "Введіть ім'я собаки: ";
+    std::cin >> name;
+    std::cout << "Введіть вагу собаки: ";
+    std::cin >> weight;
+    std::cout << "Введіть вік собаки: ";
+    std::cin >> age;
+
+    Dog newDog(name, weight, age);
+    owner.addDog(newDog);
+}
+void Master::removeDogFromOwner(Master& owner){
+    int index;
+    cout << "Введіть індекс для виділення: ";
+    cin >> index;
+    owner.removeDog(index);
+}
+
 void gotoxy(int x, int y) {
     COORD crds;
     crds.X = x;
