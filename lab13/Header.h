@@ -114,7 +114,7 @@ public:
 
 	void addToOwner(Master& owner);
 	void removeDogFromOwner(Master& owner);
-
+	void editDog(int index);
 
 
 };

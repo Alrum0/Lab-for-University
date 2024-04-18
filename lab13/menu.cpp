@@ -97,7 +97,7 @@ void switchMenuTask() {
 
 			break;
 		case 4:
-
+			int editIndex;
 			int choice;
 			do {
 				cout << "Меню власника собаки:" << endl;
@@ -106,8 +106,9 @@ void switchMenuTask() {
 				cout << "1. Додати собаку" << endl;
 				cout << "2. Видалити собаку" << endl;
 				cout << "3. Переглянути iнформацiю про всiх собак" << endl;
+				cout << "3. Редагування даних собаки" << endl;
 				SetConsoleTextAttribute(h, 4);
-				cout << "4. Вийти" << endl;
+				cout << "5. Вийти" << endl;
 				SetConsoleTextAttribute(h, 6);
 				cout << "Виберiть опцiю: ";
 				SetConsoleTextAttribute(h, 7);
@@ -127,6 +128,11 @@ void switchMenuTask() {
 					owner.displayDogs(); 
 					break;
 				case 4:
+					cout << "Введiть iндекс собаки для редагування: " << endl;
+					cin >> editIndex;
+					owner.editDog(editIndex);
+					break;
+				case 5:
 					cout << "Вихiд з програми." << endl;
 					break;
 				default:

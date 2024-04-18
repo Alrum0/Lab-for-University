@@ -105,7 +105,31 @@ void Master::removeDogFromOwner(Master& owner){
     cin >> index;
     owner.removeDog(index);
 }
+void Master::editDog(int index) {
+    if (index >= 0 && index < dogCount) {
+        string name;
+        double weight;
+        int age;
 
+        cout << "–едагуЇмо iнформацiю про собаку з iндексом " << index << endl;
+
+        cout << "¬ведiть iм'€ собаки: ";
+        cin >> name;
+        cout << "¬ведiть вагу собаки: ";
+        cin >> weight;
+        cout << "¬ведiть вiк собаки: ";
+        cin >> age;
+
+        dogs[index].setName(name);
+        dogs[index].setWeight(weight);
+        dogs[index].setAge(age);
+
+        cout << "Iнформацi€ про собаку була вiдновлена.";
+    }
+    else {
+        cout << "Ќвiрний iндекс собаки. —пробуйте ще раз.";
+    }
+}
 
 
 void gotoxy(int x, int y) {
