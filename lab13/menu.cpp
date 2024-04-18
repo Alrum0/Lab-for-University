@@ -16,7 +16,7 @@ void switchMenuTask() {
 	float mass, part;
 	long num;
 
-	Figure kr(10);
+	Figure kr(7);
 	Figure tr(20, 10);
 
 	Complex num1(5, 4);
