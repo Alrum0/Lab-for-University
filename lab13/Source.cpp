@@ -50,7 +50,9 @@ void Dog::setWeight(double weight) { this->weight = weight; }
 void Dog::setAge(int age) { this->age = age; }
 
 int Master::count = 0;
-Master::~Master() { delete[] dogs; }
+Master::~Master() {delete[] dogs;}
+
+
 int Master::getID() { return ID; }
 void Master::addDog(const Dog& dog) {
     Dog* temp = new Dog[dogCount + 1];
@@ -78,11 +80,18 @@ void Master::removeDog(int index) {
         count--;
     }
 }
+
 void Master::displayDogs(){
-    cout << "Iм'я господаря собак: " << name << " (ID: " << ID << " )" << endl;
-    for (int i = 0; i < dogCount; i++) {
-        cout<< i <<". "<< "Iм'я собаки: " << dogs[i].getName() << ", Вага: " << dogs[i].getWeight() << ", Вiк: " << dogs[i].getAge() << endl;
+    if (dogCount == 0) {
+        cout << "У власника немає собак." << endl;
     }
+    else {
+        cout << "Iм'я господаря собак: " << name << " (ID: " << ID << " )" << endl;
+        for (int i = 0; i < dogCount; i++) {
+            cout << i << ". " << "Iм'я собаки: " << dogs[i].getName() << ", Вага: " << dogs[i].getWeight() << ", Вiк: " << dogs[i].getAge() << endl;
+        }
+    }
+    
 }
 void Master::addToOwner(Master& owner) {
     string name;

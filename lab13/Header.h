@@ -1,4 +1,4 @@
-#ifndef HEADER_H
+п»ї#ifndef HEADER_H
 #define HEADER_H
 
 #include <iostream>
@@ -35,25 +35,25 @@ public:
 
 	auto getNum();
 	void setNum(long num);
-	
+
 	void showUp();
 	void showDown();
 	void show();
 
 	void input();
 
-	Space() : spectralClass('A'), mass(0), part(0), num(0) {}; //конструктор за умовченням
-	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};// конструктор з аргументами
-	Space(const Space& other) : spectralClass(other.spectralClass), mass(other.mass), part(other.part), num(other.num) {}; //конструктор копіювання
+	Space() : spectralClass('A'), mass(0), part(0), num(0) {}; //ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г§Г  ГіГ¬Г®ГўГ·ГҐГ­Г­ГїГ¬
+	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};// ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г§ Г Г°ГЈГіГ¬ГҐГ­ГІГ Г¬ГЁ
+	Space(const Space& other) : spectralClass(other.spectralClass), mass(other.mass), part(other.part), num(other.num) {}; //ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇВіГѕГўГ Г­Г­Гї
 };
 
 class Figure {
 private:
-	double radius; 
-	double height; 
-	double base;   
+	double radius;
+	double height;
+	double base;
 public:
-	
+
 	Figure(double r) : radius(r), height(0), base(0) {}
 	Figure(double h, double b) : radius(0), height(h), base(b) {}
 
@@ -67,7 +67,7 @@ private:
 	int material;
 	int imaginary;
 public:
-	Complex(int m, int i) : material(m), imaginary(i){}
+	Complex(int m, int i) : material(m), imaginary(i) {}
 
 	void add(int r, int m);
 	Complex add(const Complex& othter);
@@ -81,8 +81,8 @@ private:
 	double weight;
 	int age;
 public:
-	Dog() : name(""), weight(0), age(0){}
-	Dog(string name, double weight, int age) : name(name), weight(weight), age(age){}
+	Dog() : name(""), weight(0), age(0) {}
+	Dog(string name, double weight, int age) : name(name), weight(weight), age(age) {}
 
 	string getName();
 	double getWeight();
@@ -103,8 +103,8 @@ private:
 public:
 	static int count;
 
-	Master() : name(""), ID(0), dogs(nullptr), dogCount(0){}
-	Master(string name, int ID) : name(name), ID(ID), dogs(nullptr), dogCount(0){}
+	Master() : name(""), ID(0), dogs(nullptr), dogCount(0) {}
+	Master(string name, int ID) : name(name), ID(ID), dogs(nullptr), dogCount(0) {}
 	~Master();
 
 	int getID();

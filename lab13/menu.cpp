@@ -1,4 +1,4 @@
-#include "Header.h"
+ï»¿#include "Header.h"
 
 
 
@@ -33,16 +33,16 @@ void switchMenuTask() {
 
 
 		SetConsoleTextAttribute(h, 3);
-		cout << endl << "1. Çàâäàííÿ 1. Iíôîðìàòèâíà òàáëèöÿ" << endl;
-		cout << "2. Çàâäàííÿ 2. Ðîçðàõóíîê ïëîùi" << endl;
-		cout << "3. Çàâäàííÿ 3. Êîìïëåêñíi ÷èñëà" << endl;
-		cout << "4. Çàâäàííÿ 4. Ñïèñîê ñîáàê" << endl;
+		cout << endl << "1. Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ 1. IÐ½Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð¸Ð²Ð½Ð° Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ" << endl;
+		cout << "2. Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ 2. Ð Ð¾Ð·Ñ€Ð°Ñ…ÑƒÐ½Ð¾Ðº Ð¿Ð»Ð¾Ñ‰i" << endl;
+		cout << "3. Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ 3. ÐšÐ¾Ð¼Ð¿Ð»ÐµÐºÑÐ½i Ñ‡Ð¸ÑÐ»Ð°" << endl;
+		cout << "4. Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ 4. Ð¡Ð¿Ð¸ÑÐ¾Ðº ÑÐ¾Ð±Ð°Ðº" << endl;
 
 		SetConsoleTextAttribute(h, 4);
-		cout << "7. Âèõiä" << endl;
+		cout << "7. Ð’Ð¸Ñ…iÐ´" << endl;
 		SetConsoleTextAttribute(h, 7);
 		SetConsoleTextAttribute(h, 6);
-		cout << "Îáåðè îäèí iç çàïðîïîíîâàíèõ âàðiàíòiâ: ";
+		cout << "ÐžÐ±ÐµÑ€Ð¸ Ð¾Ð´Ð¸Ð½ iÐ· Ð·Ð°Ð¿Ñ€Ð¾Ð¿Ð¾Ð½Ð¾Ð²Ð°Ð½Ð¸Ñ… Ð²Ð°Ñ€iÐ°Ð½Ñ‚iÐ²: ";
 		SetConsoleTextAttribute(h, 7);
 
 		cin >> menuitem;
@@ -51,13 +51,13 @@ void switchMenuTask() {
 		case 1:
 			
 			for (int i = 0; i < N; i++) {
-				cout << "Ââåäiòü ñïåêòðàëüíèé êëàñ: ";
+				cout << "Ð’Ð²ÐµÐ´iÑ‚ÑŒ ÑÐ¿ÐµÐºÑ‚Ñ€Ð°Ð»ÑŒÐ½Ð¸Ð¹ ÐºÐ»Ð°Ñ: ";
 				cin >> spectralClass;
-				cout << "Ââåäiòü ìàñó: ";
+				cout << "Ð’Ð²ÐµÐ´iÑ‚ÑŒ Ð¼Ð°ÑÑƒ: ";
 				cin >> mass;
-				cout << "Ââåäiòü ÷àñòêó: ";
+				cout << "Ð’Ð²ÐµÐ´iÑ‚ÑŒ Ñ‡Ð°ÑÑ‚ÐºÑƒ: ";
 				cin >> part;
-				cout << "Ââåäiòü êiëüêiñòü: ";
+				cout << "Ð’Ð²ÐµÐ´iÑ‚ÑŒ ÐºiÐ»ÑŒÐºiÑÑ‚ÑŒ: ";
 				cin >> num;
 
 				spaces[i].setSpectralClass(spectralClass);
@@ -76,72 +76,76 @@ void switchMenuTask() {
 			break;
 		case 2:
 
-			cout << "Ïëîùà êîëà: " << kr.circleArea() << endl;
-			cout << "Ïëîùà òðèêóòíèêà: " << tr.triangleArea() << endl;
+			cout << "ÐŸÐ»Ð¾Ñ‰Ð° ÐºÐ¾Ð»Ð°: " << kr.circleArea() << endl;
+			cout << "ÐŸÐ»Ð¾Ñ‰Ð° Ñ‚Ñ€Ð¸ÐºÑƒÑ‚Ð½Ð¸ÐºÐ°: " << tr.triangleArea() << endl;
 
 			break;
 		case 3:
 			
 
-			cout << "Ïåðøå êîìïëåêñíå ÷èñëî: ";
+			cout << "ÐŸÐµÑ€ÑˆÐµ ÐºÐ¾Ð¼Ð¿Ð»ÐµÐºÑÐ½Ðµ Ñ‡Ð¸ÑÐ»Ð¾: ";
 			num1.print();
-			cout << "Äðóãå êîìïëåêñíå ÷èñëî: ";
+			cout << "Ð”Ñ€ÑƒÐ³Ðµ ÐºÐ¾Ð¼Ð¿Ð»ÐµÐºÑÐ½Ðµ Ñ‡Ð¸ÑÐ»Ð¾: ";
 			num2.print();
 
+			cout << "Ð¡ÑƒÐ¼Ð° Ð´Ð²Ð¾Ñ… ÐºÐ¾Ð¼Ð¿Ð»ÐµÐºÑÐ½Ð¸Ñ… Ñ‡Ð¸ÑÐµÐ»: ";
+			sum.print();
+
 			num1.add(6, 6);
-			cout << "Ï³ñëÿ äîäàâàííÿ: ";
+			cout << "ÐŸiÑÐ»Ñ Ð´Ð¾Ð´Ð°Ð²Ð°Ð½Ð½Ñ: ";
 			num1.print();
 
-			cout << "Ñóìà äâîõ êîìïëåêñíèõ ÷èñåë: ";
-			sum.print();
+			
 
 			break;
 		case 4:
+
+			system("cls");
 			int editIndex;
 			int choice;
 			do {
-				cout << "Ìåíþ âëàñíèêà ñîáàêè:" << endl;
+				cout << "ÐœÐµÐ½ÑŽ Ð²Ð»Ð°ÑÐ½Ð¸ÐºÐ° ÑÐ¾Ð±Ð°ÐºÐ¸:" << endl;
 
 				SetConsoleTextAttribute(h, 3);
-				cout << "1. Äîäàòè ñîáàêó" << endl;
-				cout << "2. Âèäàëèòè ñîáàêó" << endl;
-				cout << "3. Ïåðåãëÿíóòè iíôîðìàöiþ ïðî âñiõ ñîáàê" << endl;
-				cout << "3. Ðåäàãóâàííÿ äàíèõ ñîáàêè" << endl;
+				cout << "1. Ð”Ð¾Ð´Ð°Ñ‚Ð¸ ÑÐ¾Ð±Ð°ÐºÑƒ" << endl;
+				cout << "2. Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ ÑÐ¾Ð±Ð°ÐºÑƒ" << endl;
+				cout << "3. ÐŸÐµÑ€ÐµÐ³Ð»ÑÐ½ÑƒÑ‚Ð¸ iÐ½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†iÑŽ Ð¿Ñ€Ð¾ Ð²ÑiÑ… ÑÐ¾Ð±Ð°Ðº" << endl;
+				cout << "4. Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ð½Ð½Ñ Ð´Ð°Ð½Ð¸Ñ… ÑÐ¾Ð±Ð°ÐºÐ¸" << endl;
 				SetConsoleTextAttribute(h, 4);
-				cout << "5. Âèéòè" << endl;
+				cout << "5. Ð’Ð¸Ð¹Ñ‚Ð¸" << endl;
 				SetConsoleTextAttribute(h, 6);
-				cout << "Âèáåðiòü îïöiþ: ";
+				cout << "Ð’Ð¸Ð±ÐµÑ€iÑ‚ÑŒ Ð¾Ð¿Ñ†iÑŽ: ";
 				SetConsoleTextAttribute(h, 7);
 				cin >> choice;
 
 				switch (choice) {
 				case 1:
-					cout << "Äîäàâàííÿ íîâî¿ ñîáàêè â ñïèñîê" << endl;
-					owner.addToOwner(owner); 
+					cout << "Ð”Ð¾Ð´Ð°Ð²Ð°Ð½Ð½Ñ Ð½Ð¾Ð²Ð¾Ñ— ÑÐ¾Ð±Ð°ÐºÐ¸." << endl;
+					owner.addToOwner(owner);
 					break;
 				case 2:
-					cout << "Âèäàëåííÿ ñîáàêè ç ñïèñêó" << endl;
-					owner.removeDogFromOwner(owner); 
+					cout << "Ð’Ð¸Ð´Ð°Ð»ÐµÐ½Ð½Ñ ÑÐ¾Ð±Ð°ÐºÐ¸." << endl;
+					owner.removeDogFromOwner(owner);
 					break;
 				case 3:
-					cout << "Ïåðåãëÿä iíôîðìàöi¿ ïðî âñiõ ñîáàê ó ñïèñêó" << endl;
-					owner.displayDogs(); 
+					cout << "ÐŸÐµÑ€ÐµÐ³Ð»ÑÐ´ iÐ½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†iÑ— Ð¿Ñ€Ð¾ Ð²ÑiÑ… ÑÐ¾Ð±Ð°Ðº" << endl;
+					owner.displayDogs();
 					break;
 				case 4:
-					cout << "Ââåäiòü iíäåêñ ñîáàêè äëÿ ðåäàãóâàííÿ: " << endl;
+					cout << "Ð’Ð²ÐµÐ´iÑ‚ÑŒ iÐ½Ð´ÐµÐºÑ ÑÐ¾Ð±Ð°ÐºÐ¸, ÑÐºÑƒ Ð±Ð°Ð¶Ð°Ñ”Ñ‚Ðµ Ñ€ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸: ";
 					cin >> editIndex;
 					owner.editDog(editIndex);
 					break;
 				case 5:
-					cout << "Âèõiä ç ïðîãðàìè." << endl;
+					cout << "Ð’Ð¸Ñ…iÐ´ Ð· Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸." << endl;
 					break;
 				default:
-					cout << "Íåêîðåêòíèé âèá³ð. Áóäü ëàñêà, ñïðîáóéòå çíîâó." << endl;
+					cout << "ÐÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¸Ð¹ Ð²Ð¸Ð±Ñ–Ñ€. Ð‘ÑƒÐ´ÑŒ Ð»Ð°ÑÐºÐ°, ÑÐ¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ð·Ð½Ð¾Ð²Ñƒ." << endl;
 					break;
 				}
 				system("pause");
 				system("cls");
-			} while (choice != 4);
+			} while (choice != 5);
 
 			break;
 		case 7:
@@ -158,5 +162,5 @@ void switchMenuTask() {
 
 
 	} while (menuitem != 7);
-}
+};
 
