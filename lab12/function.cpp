@@ -182,11 +182,19 @@ void swapMaxMinNumberRef(int& a, int& b, int& c) {
     int minVal = a, maxVal = a;
     int* minPtr = &a, * maxPtr = &a;
 
-    if (b < minVal) { minVal = b; minPtr = &b; }
-    else if (b > maxVal) { maxVal = b; maxPtr = &b; }
+    if (b < minVal) { 
+        minVal = b; minPtr = &b; 
+    }
+    else if (b > maxVal) { 
+        maxVal = b; maxPtr = &b; 
+    }
 
-    if (c < minVal) { minVal = c; minPtr = &c; }
-    else if (c > maxVal) { maxVal = c; maxPtr = &c; }
+    if (c < minVal) {
+        minVal = c; minPtr = &c;
+    }
+    else if (c > maxVal) {
+        maxVal = c; maxPtr = &c; 
+    }
 
     *minPtr = maxVal;
     *maxPtr = minVal;
@@ -195,11 +203,19 @@ void swapMaxMinNumberPtr(int *a, int *b, int *c) {
     int minVal = *a, maxVal = *a;
     int* minPtr = a, * maxPtr = a;
 
-    if (*b < minVal) { minVal = *b; minPtr = b; }
-    else if (*b > maxVal) { maxVal = *b; maxPtr = b; }
+    if (*b < minVal) {
+        minVal = *b; minPtr = b; 
+    }
+    else if (*b > maxVal) { 
+        maxVal = *b; maxPtr = b; 
+    }
 
-    if (*c < minVal) { minVal = *c; minPtr = c; }
-    else if (*c > maxVal) { maxVal = *c; maxPtr = c; }
+    if (*c < minVal) { 
+        minVal = *c; minPtr = c;
+    }
+    else if (*c > maxVal) {
+        maxVal = *c; maxPtr = c; 
+    }
 
     *minPtr = maxVal;
     *maxPtr = minVal;
@@ -259,4 +275,22 @@ int productNegativeNum(int arr[], int a) {
     return product;
 }
 
+void sortArray(int arr[], int size, CompareFunction cmp) {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int j = 0; j < size - i - 1; ++j) {
+            if (!cmp(arr[j], arr[j + 1])) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
 
+bool ascending(int a, int b) {
+    return a > b;
+}
+
+bool descending(int a, int b) {
+    return a < b;
+}

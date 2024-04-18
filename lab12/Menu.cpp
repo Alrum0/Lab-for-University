@@ -16,6 +16,9 @@ void switchMenuTask() {
 	int choose;
 	int* array;
 
+	int* arry;
+	int wow;
+
 	HANDLE h;
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -34,6 +37,7 @@ void switchMenuTask() {
 		cout << "3. Завдання 3. Змiна мiсцями максимальне i мiнiмальне значення" << endl;
 		cout << "4. Завдання 4. Обчислення суми та добутку в масивi" << endl;
 		cout << "5. Завдання 5. Рахування суми позитивиних, та добуток негативних" << endl;
+		cout << "6. Завдання 6. Сортування масиву" << endl;
 		SetConsoleTextAttribute(h, 4);
 		cout << "7. Вихiд" << endl;
 		SetConsoleTextAttribute(h, 7);
@@ -146,7 +150,39 @@ void switchMenuTask() {
 
 			break;
 		case 6:
+			srand(time(NULL));
+			
+			cout << "Введiть кiлькiсть елементiв: ";
+			cin >> wow;
 
+			arry = new int[wow];
+			
+
+			for (int i = 0; i < wow; i++) {
+				arry[i] = rand() % 101 - 30;
+			}
+
+			cout << "Масив: ";
+			for (int i = 0; i < wow; i++) {
+				cout <<setw(3)<< arry[i];
+			}
+			cout << endl;
+
+			sortArray(arry, wow, ascending);
+			cout << "Масив, вiдсортований за спаданням: ";
+			for (int i = 0; i < wow; ++i) {
+				cout <<setw(3) << arry[i];
+			}
+			cout << endl;
+
+			sortArray(arry, wow, descending);
+			cout << "Масив, вiдсортований за зростанням: ";
+			for (int i = 0; i < wow; ++i) {
+				cout <<setw(3)<< arry[i];
+			}
+			cout << endl;
+
+			delete[] arry;
 			break;
 		case 7:
 			exit(1);
