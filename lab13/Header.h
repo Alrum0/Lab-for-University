@@ -8,9 +8,13 @@
 
 using namespace std;
 
-#define distance 19
+#define DISTANCE 19
 #define N 3
 #define CHOISE 2
+#define USE_CONSTRUCTOR 1 // 1 - default, 2 - constructor with arguments 3 - constructor of copy
+#define LOW_BOUND 1
+#define HIGH_BOUND 100
+#define INPUT_TYPE 1 // 1 - from console, 2 - random
 
 void switchMenuTask();
 void gotoxy(int x, int y);
@@ -42,9 +46,11 @@ public:
 
 	void input();
 
-	Space() : spectralClass('A'), mass(0), part(0), num(0) {}; //êîíñòðóêòîð çà óìîâ÷åííÿì
-	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};// êîíñòðóêòîð ç àðãóìåíòàìè
-	Space(const Space& other) : spectralClass(other.spectralClass), mass(other.mass), part(other.part), num(other.num) {}; //êîíñòðóêòîð êîï³þâàííÿ
+	/*Space();*/
+
+	Space() : spectralClass('A'), mass(0), part(0), num(0) {};
+	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};
+	Space(const Space& other) : spectralClass(other.spectralClass), mass(other.mass), part(other.part), num(other.num) {}; 
 };
 
 class Figure {

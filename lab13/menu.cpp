@@ -16,6 +16,8 @@ void switchMenuTask() {
 	float mass, part;
 	long num;
 
+	string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 	Figure kr(7);
 	Figure tr(20, 10);
 
@@ -49,8 +51,12 @@ void switchMenuTask() {
 
 		switch (menuitem) {
 		case 1:
+
+			srand(time(NULL));
 			
+
 			for (int i = 0; i < N; i++) {
+#if INPUT_TYPE == 1
 				cout << "Введiть спектральний клас: ";
 				cin >> spectralClass;
 				cout << "Введiть масу: ";
@@ -60,10 +66,29 @@ void switchMenuTask() {
 				cout << "Введiть кiлькiсть: ";
 				cin >> num;
 
+#elif INPUT_TYPE == 2
+				spectralClass = letters[rand() % letters.size() + 1];
+				mass = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+				part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+				num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+#endif				
+
+#if	USE_CONSTRUCTOR == 1
+				//using default constructor
 				spaces[i].setSpectralClass(spectralClass);
 				spaces[i].setMass(mass);
 				spaces[i].setPart(part);
 				spaces[i].setNum(num);
+#elif USE_CONSTRUCTOR == 2
+				// using constructor with arguments
+				spaces[i] = { spectralClass, mass, part, num };
+
+#elif USE_CONSTRUCTOR == 3
+				// using constructor of copy
+				Space tempSpace(spectralClass, mass, part, num);
+				Space space(&tempSpace);
+				spaces[i] = space;
+#endif
 			}
 
 			spaces[0].showUp();

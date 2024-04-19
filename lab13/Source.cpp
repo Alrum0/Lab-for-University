@@ -5,6 +5,13 @@ float Space::getMass() { return mass; }
 float Space::getPart() { return part; }
 auto Space::getNum() { return num; }
 
+//Space::Space() {
+//    spectralClass = 'A';
+//    mass = 2.7;
+//    this->part = 8.8;
+//    num = 0;
+//}
+
 void Space::setSpectralClass(char SpectralClass) { this->spectralClass = SpectralClass; }
 void Space::setMass(float mass) { this->mass = mass; }
 void Space::setPart(float part) { this->part = part; }
@@ -19,13 +26,17 @@ void Space::showUp() {
 
 }
 void Space::show() {
-        cout << "|" << setw(distance) << getSpectralClass() << "|" << setw(33) << getMass() << "|" << setw(13) << getPart() << "|" << setw(13) << getNum() << "|" << endl;
+        cout << "|" << setw(DISTANCE) << getSpectralClass() << "|" << setw(33) << getMass() << "|" << setw(13) << getPart() << "|" << setw(13) << getNum() << "|" << endl;
         cout << "-----------------------------------------------------------------------------------" << endl;
 }
 void Space::showDown() {
     cout << "|" << "                Примiтка: не показанi данi для класiв: B, A, G, K                " << "|"; cout << endl;
     cout << "-----------------------------------------------------------------------------------" << endl;
 }
+
+
+
+
 
 
 double Figure::circleArea(){ return 3.14 * radius * radius; }
