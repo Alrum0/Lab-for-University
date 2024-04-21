@@ -126,8 +126,12 @@ public:
 };
 
 class Menu {
+private:
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 public:
+	
 	void menuShowGeneral();
+	void menuForTask4();
 };
 
 class Task1 {
@@ -151,5 +155,15 @@ public:
 	double activeTask2();
 };
 
+class Task3 {
+private:
+	Complex num1;
+	Complex num2;
+	Complex sum;
+public:
+	Task3() : num1(5, 4), num2(2, 3), sum(num1.add(num2)) {}
+
+	void activeTask3();
+};
 
 #endif 

@@ -12,16 +12,26 @@ auto Space::getNum() { return num; }
 //    num = 0;
 //}
 
+void Menu::menuForTask4() {
+    
+    cout << "Меню власника собаки:" << endl;
 
+    SetConsoleTextAttribute(h, 3);
+    cout << "1. Додати собаку" << endl;
+    cout << "2. Видалити собаку" << endl;
+    cout << "3. Переглянути iнформацiю про всiх собак" << endl;
+    cout << "4. Редагування даних собаки" << endl;
+    SetConsoleTextAttribute(h, 4);
+    cout << "5. Вийти" << endl;
+    SetConsoleTextAttribute(h, 6);
+    cout << "Виберiть опцiю: ";
+    SetConsoleTextAttribute(h, 7);
+}
 void Menu::menuShowGeneral() {
-
-    HANDLE h;
-    h = GetStdHandle(STD_OUTPUT_HANDLE);
 
     gotoxy(65, 0);
     cout << "Menu";
     gotoxy(0, 0);
-
 
     SetConsoleTextAttribute(h, 3);
     cout << endl << "1. Завдання 1. Iнформативна таблиця" << endl;
@@ -89,7 +99,19 @@ double Task2::activeTask2() {
     cout << "Площа кола: " << kr.circleArea() << endl;
     cout << "Площа трикутника: " << tr.triangleArea() << endl;
 }
+void Task3::activeTask3() {
+    cout << "Перше комплексне число: ";
+    num1.print();
+    cout << "Друге комплексне число: ";
+    num2.print();
 
+    cout << "Сума двох комплексних чисел: ";
+    sum.print();
+
+    num1.add(6, 6);
+    cout << "Пiсля додавання: ";
+    num1.print();
+}
 
 void Space::setSpectralClass(char SpectralClass) { this->spectralClass = SpectralClass; }
 void Space::setMass(float mass) { this->mass = mass; }
