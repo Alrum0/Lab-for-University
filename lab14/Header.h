@@ -46,11 +46,18 @@ public:
 
 	void input();
 
-	/*Space();*/
 
 	Space() : spectralClass('A'), mass(0), part(0), num(0) {};
 	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};
 	Space(const Space& other) : spectralClass(other.spectralClass), mass(other.mass), part(other.part), num(other.num) {};
+
+	Space& operator=(const Space& space);
+	bool operator==(const Space& space) const;
+	Space operator+(const Space& space) const;
+	friend Space operator+(const Space& space1, const Space& space2);
+	friend bool operator==(const Space& space1, const Space& space2);
+	friend ostream& operator<<(ostream& out, const Space& space);
+	friend istream& operator>>(istream& in, Space& space);
 };
 
 class Figure {
@@ -161,9 +168,33 @@ private:
 	Complex num2;
 	Complex sum;
 public:
-	Task3() : num1(5, 4), num2(2, 3), sum(num1.add(num2)) {}
+	Task3() : num1(11, 4), num2(2, 3), sum(num1.add(num2)) {}
 
 	void activeTask3();
 };
+
+//class Task {
+//private:
+//	char spectralClass;
+//	float mass, part;
+//	long num;
+//	Space spaces[N];
+//	string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//
+//	Figure kr;
+//	Figure tr;
+//
+//	Complex num1;
+//	Complex num2;
+//	Complex sum = num1.add(num2);;
+//public:
+//	void activeTask();
+//
+//	Task(double radius, double height, double base) : kr(radius), tr(height, base) {}
+//	double activeTask2();
+//
+//	Task() : num1(11, 4), num2(2, 3), sum(num1.add(num2)) {}
+//	void activeTask3();
+//};
 
 #endif 

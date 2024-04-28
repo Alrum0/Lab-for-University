@@ -5,13 +5,6 @@ float Space::getMass() { return mass; }
 float Space::getPart() { return part; }
 auto Space::getNum() { return num; }
 
-//Space::Space() {
-//    spectralClass = 'A';
-//    mass = 2.7;
-//    this->part = 8.8;
-//    num = 0;
-//}
-
 void Menu::menuForTask4() {
     
     cout << "Меню власника собаки:" << endl;
@@ -94,23 +87,93 @@ void Task1::activeTask() {
     }
 
     spaces[0].showDown();
+
+    Space space1( 10, 20, 30);
+    Space space2( 5, 15, 25);
+
+    Space sum = space1 + space2;
+    cout << "Sum: " << sum << endl;
+    if (space1 == space2) {
+        cout << "Spaces are equal" << endl;
+    }
+    else {
+        cout << "Spaces are not equal" << endl;
+    }
+    Space space3;
+    cin >> space3;
+    cout << "You entered: " << space3 << endl;
 }
+////////////////////////
+Space& Space::operator=(const Space & space) {
+    this->mass = space.mass;
+    this->part = space.part;
+    this->num = space.num;
+    this->spectralClass = space.spectralClass;
+
+    return *this;
+}
+bool Space::operator==(const Space& space) const {
+    return(mass == space.mass &&
+        part == space.part &&
+        num == space.num &&
+        spectralClass == space.spectralClass);
+
+}
+Space Space::operator+(const Space& space) const {
+    Space result;
+    result.mass = mass + space.mass;
+    result.part = part + space.part;
+    result.num = num + space.num;
+
+    return result;
+}
+Space operator+(const Space& space1, const Space& space2) {
+    Space result;
+    result.mass = space1.mass + space2.mass;
+    result.part = space1.part + space2.part;
+    result.num = space1.part + space2.part;
+
+    return result;
+}
+bool operator==(const Space& space1, const Space& space2) {
+    return(space1.mass == space2.mass &&
+           space1.part == space2.part &&
+           space1.num == space2.num);
+}
+ostream& operator<<(ostream& out, const Space& space) {
+    out << "Spectral Class: " << space.spectralClass << ", Mass: " << space.mass << ", Part: " << space.part << ", Num: " << space.num << endl;
+    return out;
+}
+istream& operator>>(istream& in,Space& space) {
+    string temp;
+    cout << "Enter Spectral Class: ";
+    in >> temp;
+    temp = space.spectralClass ;
+    cout << "Enter Mass: ";
+    in >> space.mass;
+    cout << "Enter Part: ";
+    in >> space.part;
+    cout << "Enter Num: ";
+    in >> space.num;
+    return in;
+}
+///////////////////////
 double Task2::activeTask2() {
     cout << "Площа кола: " << kr.circleArea() << endl;
     cout << "Площа трикутника: " << tr.triangleArea() << endl;
 }
 void Task3::activeTask3() {
     cout << "Перше комплексне число: ";
-    num1.print();
+    this->num1.print();
     cout << "Друге комплексне число: ";
-    num2.print();
+    this->num2.print();
 
     cout << "Сума двох комплексних чисел: ";
-    sum.print();
+    this->sum.print();
 
-    num1.add(6, 6);
+    this->num1.add(6, 6);
     cout << "Пiсля додавання: ";
-    num1.print();
+    this->num1.print();
 }
 
 void Space::setSpectralClass(char SpectralClass) { this->spectralClass = SpectralClass; }
@@ -134,6 +197,8 @@ void Space::showDown() {
     cout << "|" << "                Примiтка: не показанi данi для класiв: B, A, G, K                " << "|"; cout << endl;
     cout << "-----------------------------------------------------------------------------------" << endl;
 }
+
+
 
 double Figure::circleArea() { return 3.14 * radius * radius; }
 double Figure::triangleArea() { return 0.5 * base * height; }
