@@ -88,20 +88,6 @@ void Task1::activeTask() {
 
     spaces[0].showDown();
 
-    Space space1( 10, 20, 30);
-    Space space2( 5, 15, 25);
-
-    Space sum = space1 + space2;
-    cout << "Sum: " << sum << endl;
-    if (space1 == space2) {
-        cout << "Spaces are equal" << endl;
-    }
-    else {
-        cout << "Spaces are not equal" << endl;
-    }
-    Space space3;
-    cin >> space3;
-    cout << "You entered: " << space3 << endl;
 }
 ////////////////////////
 Space& Space::operator=(const Space & space) {
