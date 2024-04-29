@@ -38,7 +38,7 @@ void Space::activeTask() {
         part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
         num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
 
-        spaces[i] = Space(spectralClass, mass, part, num);          // <-----
+        spaces[i] = Space().operator()(spectralClass, mass, part, num);          // <----- // <-----
 #endif				
 
 #if	USE_CONSTRUCTOR == 1
@@ -76,7 +76,7 @@ void Space::activeTask() {
 
     Space space1('A', 10.5, 20.3, 100);
     Space space2('A', 10.5, 20.3, 100);
-    if (space1 == space2) {
+    if (space1 == space2) {                             //<----
         cout << "Значення збiгаються" << endl;
     }
     else {
@@ -135,6 +135,14 @@ istream& operator>>(istream& in, Space& space) {
     cout << "Enter Num: ";
     in >> space.num;
     return in;
+}
+Space Space::operator()(char spectralClass, float mass, float part, long num) {
+    this->spectralClass = spectralClass;
+    this->mass = mass;
+    this->part = part;
+    this->num = num;
+
+    return *this;
 }
 
 void Space::showUp() {

@@ -55,6 +55,7 @@ public:
 	/*friend bool operator==(const Space& space1, const Space& space2);*/
 	friend ostream& operator<<(ostream& out, const Space& space);
 	friend istream& operator>>(istream& in, Space& space);
+	Space operator()(char spectralClass, float mass, float part, long num);
 };
 
 #endif
