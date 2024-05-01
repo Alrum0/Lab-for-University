@@ -10,6 +10,13 @@ void Space::setMass(float mass) { this->mass = mass; }
 void Space::setPart(float part) { this->part = part; }
 void Space::setNum(long num) { this->num = num; }
 
+void gotoxy(int x, int y) {
+    COORD crds;
+    crds.X = x;
+    crds.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), crds);
+}
+
 void Space::activeTask() {
 
     Space spaces[N];
@@ -74,30 +81,30 @@ void Space::activeTask() {
     }
     cout << "Result: " << sum << endl;                  //<-----
 
-    Space space1('A', 10.5, 20.3, 100);
-    Space space2('A', 10.5, 20.3, 100);
-    if (space1 == space2) {                             //<----
-        cout << "«наченн€ збiгаютьс€" << endl;
-    }
-    else {
-        cout << "«наченн€ не збiгаютьс€" << endl;
-    }
 }
 
 Space& Space::operator=(const Space& space) {
-    this->mass = space.mass;
-    this->part = space.part;
-    this->num = space.num;
-    this->spectralClass = space.spectralClass;
+    //this->mass = space.mass;
+    //this->part = space.part;
+    //this->num = space.num;
+    //this->spectralClass = space.spectralClass;
+
+    //return *this;
+    if (this == &space) 
+        return *this;
+
+    spectralClass = space.spectralClass;
+    mass = space.mass;
+    part = space.part;
+    num = space.num;
 
     return *this;
 }
 bool Space::operator==(const Space& space) const {
-    return(mass == space.mass &&
-        part == space.part &&
-        num == space.num &&
-        spectralClass == space.spectralClass);
-
+    return (spectralClass == space.spectralClass &&
+            mass == space.mass &&
+            part == space.part &&
+            num == space.num);
 }
 Space Space::operator+(const Space& space) const {
     Space result;
@@ -126,13 +133,13 @@ ostream& operator<<(ostream& out, const Space& space) {
 }
 istream& operator>>(istream& in, Space& space) {
     
-    cout << "Enter Spectral Class: ";
+    cout << "¬вед≥ть спектральний клас: ";
     in >> space.spectralClass;
-    cout << "Enter Mass: ";
+    cout << "¬вед≥ть масу: ";
     in >> space.mass;
-    cout << "Enter Part: ";
+    cout << "¬вед≥ть частку: ";
     in >> space.part;
-    cout << "Enter Num: ";
+    cout << "¬вед≥ть к≥льк≥сть: ";
     in >> space.num;
     return in;
 }
@@ -143,6 +150,9 @@ Space Space::operator()(char spectralClass, float mass, float part, long num) {
     this->num = num;
 
     return *this;
+}
+char Space::operator[](int num) {
+    return spectralClass;
 }
 
 void Space::showUp() {

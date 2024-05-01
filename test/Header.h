@@ -44,7 +44,7 @@ public:
 
 	void activeTask();
 
-	Space() : spectralClass('A'), mass(0), part(0), num(0) {};
+	Space() : spectralClass('B'), mass(0), part(0), num(0) {};
 	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};
 	Space(const Space& other) : spectralClass(other.spectralClass), mass(other.mass), part(other.part), num(other.num) {};
 
@@ -56,6 +56,12 @@ public:
 	friend ostream& operator<<(ostream& out, const Space& space);
 	friend istream& operator>>(istream& in, Space& space);
 	Space operator()(char spectralClass, float mass, float part, long num);
+	char operator[](int num);
+	
+	bool operator!=(const Space& space) const {
+		return !(*this == space);
+	}
+	void gotoxy(int x, int y);
 };
 
 #endif
