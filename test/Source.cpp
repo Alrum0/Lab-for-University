@@ -10,6 +10,8 @@ void Space::setMass(float mass) { this->mass = mass; }
 void Space::setPart(float part) { this->part = part; }
 void Space::setNum(long num) { this->num = num; }
 
+Space Space::originalSpaces[N];
+
 void gotoxy(int x, int y) {
     COORD crds;
     crds.X = x;
@@ -102,10 +104,11 @@ Space& Space::operator=(const Space& space) {
 }
 bool Space::operator==(const Space& space) const {
     return (spectralClass == space.spectralClass &&
-            mass == space.mass &&
-            part == space.part &&
-            num == space.num);
+        mass == space.mass &&
+        part == space.part &&
+        num == space.num);
 }
+
 Space Space::operator+(const Space& space) const {
     Space result;
     result.mass = mass + space.mass;

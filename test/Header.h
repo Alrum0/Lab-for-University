@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <Windows.h>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -16,6 +17,8 @@ using namespace std;
 #define HIGH_BOUND 100
 #define INPUT_TYPE 2 // 1 - from console, 2 - random
 
+void gotoxy(int x, int y);
+
 class Space {
 private:
 	char spectralClass;
@@ -24,6 +27,8 @@ private:
 	long num;
 
 public:
+	static Space originalSpaces[N];
+
 	char getSpectralClass();
 	void setSpectralClass(char SpectralClass);
 
@@ -61,7 +66,8 @@ public:
 	bool operator!=(const Space& space) const {
 		return !(*this == space);
 	}
-	void gotoxy(int x, int y);
+
+
 };
 
 #endif

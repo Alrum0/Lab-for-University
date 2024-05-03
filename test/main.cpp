@@ -1,5 +1,6 @@
 #include "Header.h"
 
+Space originalSpaces[N];
 
 int main()
 {
@@ -7,7 +8,7 @@ int main()
 	HANDLE h;
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	Space originalSpaces[N];
+	
 	Space spaces[N];
 	Space space;
 	Space temp;
@@ -16,9 +17,9 @@ int main()
 	int index1, index2;
 
 	do {
-		/*gotoxy(65, 0);*/
+		gotoxy(65, 0);
 		cout << "Menu";
-	/*	gotoxy(0, 0);*/
+		gotoxy(0, 0);
 
 
 		SetConsoleTextAttribute(h, 3);
@@ -38,33 +39,19 @@ int main()
 		switch (choice) {
 		case 1:
 			space.activeTask();
+			for (int i = 0; i < N; i++) {
+				spaces[i] = originalSpaces[i];
+			}
 			break;
 		case 2:
-			/*cout << "Введіть індекс рядка, який бажаєте змінити: ";
-			cin >> index;
-			if (index >= 0 && index <= N) {
-				if (index == 0 || index == 3) {
-					temp = spaces[index];
-				}
-				cout << "Введіть нові дані для рядка" << index << ":" << endl;
-				cin >> spaces[index];
-
-				if (index == 0 || index == 3) {
-					spaces[index] = temp;
-				}
-				cout << "Рядок успішно змінено!" << endl;
-			}
-			else {
-				cout << "Неправильний індекс рядка!" << endl;
-			}*/
 			cout << "Введіть індекс рядка, який бажаєте змінити: ";
 			cin >> index;
 			if (index >= 0 && index < N) {
 				if (index == 0 || index == 3) {
-					originalSpaces[index] = spaces[index];
+					originalSpaces[index] = space;
 				}
 				cout << "Введіть нові дані для рядка" << index << ":" << endl;
-				cin >> spaces[index];
+				cin >> originalSpaces[index];
 				cout << "Рядок успішно змінено!" << endl;
 			}
 			else {
@@ -76,13 +63,10 @@ int main()
 			cin >> index1;
 			cout << "Введіть індекс для другого рядка: ";
 			cin >> index2;
-
-			
-
-			if (index1 >= 0 && index1 <= N && index2 >= 0 && index2 <= N) {
-				if (spaces[index1] == spaces[index2]) {
-					spaces[index1].show();
-					spaces[index2].show();
+			if (index1 >= 0 && index1 < N && index2 >= 0 && index2 < N) {
+				if (originalSpaces[index1] == originalSpaces[index2]) {
+					originalSpaces[index1].show();
+					originalSpaces[index2].show();
 					cout << "Рядки " << index1 << " і " << index2 << " співпадають!" << endl;
 				}
 				else {
@@ -92,17 +76,11 @@ int main()
 			else {
 				cout << "Неправильний індекс рядків!" << endl;
 			}
-
 			break;
 		case 4:
 			cout << "Оновлена таблиця:" << endl;
 			for (int i = 0; i < N; i++) {
-				if (originalSpaces[i] != spaces[i]) {
-					cout << "Рядок " << i << ": " << spaces[i] << endl;
-				}
-				else {
-					cout << "Рядок " << i << ": " << originalSpaces[i] << endl;
-				}
+				cout << "Рядок " << i << ": " << originalSpaces[i] << endl;
 			}
 			break;
 		case 7:
