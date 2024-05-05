@@ -70,4 +70,17 @@ public:
 
 };
 
+
+class Menu {
+protected:
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	Space space;
+	Space temp;
+	int choice;
+	int index;
+	int index1, index2;
+	bool tableGenerated = false;
+public:
+	void menuActive();
+};
 #endif
