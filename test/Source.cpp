@@ -19,12 +19,75 @@ void gotoxy(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), crds);
 }
 
-void Space::activeTask() {
+//void Space::activeTask() {
+//
+//    Space spaces[N];
+//    string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//    srand(time(NULL));
+//
+//
+//    for (int i = 0; i < N; i++) {
+//#if INPUT_TYPE == 1
+//        cout << "¬ведiть спектральний клас: ";
+//        cin >> spectralClass;
+//        cout << "¬ведiть масу: ";
+//        cin >> mass;
+//        cout << "¬ведiть частку: ";
+//        cin >> part;
+//        cout << "¬ведiть кiлькiсть: ";
+//        cin >> num;
+////TODO: fix operator>> for input infotmation
+//        /*cin >> spaces[i];*/                               //<-----
+//
+//        spaces[i] = Space(spectralClass, mass, part, num);
+//
+//#elif INPUT_TYPE == 2
+//        spectralClass = letters[rand() % letters.size() + 1];
+//        mass = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+//        part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+//        num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+//
+//        spaces[i] = Space().operator()(spectralClass, mass, part, num);          // <----- // <-----
+//#endif				
+//
+//#if	USE_CONSTRUCTOR == 1
+//        //using default constructor
+//        spaces[i].setSpectralClass(spectralClass);
+//        spaces[i].setMass(mass);
+//        spaces[i].setPart(part);
+//        spaces[i].setNum(num);
+//#elif USE_CONSTRUCTOR == 2
+//        // using constructor with arguments
+//        spaces[i] = { spectralClass, mass, part, num };
+//
+//#elif USE_CONSTRUCTOR == 3
+//        // using constructor of copy
+//        Space tempSpace(spectralClass, mass, part, num);
+//        Space space(&tempSpace);
+//        spaces[i] = space;
+//#endif
+//    }
+//
+//    spaces[0].showUp();
+//
+//    for (int i = 0; i < N; i++) {
+//        spaces[i].show();
+//    }
+//
+//    spaces[0].showDown();
+//    cout << endl;
+//
+//    Space sum;
+//    for (int i = 0; i < N; i++) {
+//        sum = sum + spaces[i];                  //<-----
+//    }
+//    cout << "Result: " << sum << endl;                  //<-----
+//
+//}
 
-    Space spaces[N];
+void Space::activeTask() {
     string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     srand(time(NULL));
-
 
     for (int i = 0; i < N; i++) {
 #if INPUT_TYPE == 1
@@ -36,10 +99,8 @@ void Space::activeTask() {
         cin >> part;
         cout << "¬ведiть кiлькiсть: ";
         cin >> num;
-//TODO: fix operator>> for input infotmation
-        /*cin >> spaces[i];*/                               //<-----
 
-        spaces[i] = Space(spectralClass, mass, part, num);
+        originalSpaces[i] = Space(spectralClass, mass, part, num);
 
 #elif INPUT_TYPE == 2
         spectralClass = letters[rand() % letters.size() + 1];
@@ -47,43 +108,43 @@ void Space::activeTask() {
         part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
         num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
 
-        spaces[i] = Space().operator()(spectralClass, mass, part, num);          // <----- // <-----
+        originalSpaces[i] = Space().operator()(spectralClass, mass, part, num);
 #endif				
 
 #if	USE_CONSTRUCTOR == 1
         //using default constructor
-        spaces[i].setSpectralClass(spectralClass);
-        spaces[i].setMass(mass);
-        spaces[i].setPart(part);
-        spaces[i].setNum(num);
+        originalSpaces[i].setSpectralClass(spectralClass);
+        originalSpaces[i].setMass(mass);
+        originalSpaces[i].setPart(part);
+        originalSpaces[i].setNum(num);
 #elif USE_CONSTRUCTOR == 2
         // using constructor with arguments
-        spaces[i] = { spectralClass, mass, part, num };
+        originalSpaces[i] = { spectralClass, mass, part, num };
 
 #elif USE_CONSTRUCTOR == 3
         // using constructor of copy
         Space tempSpace(spectralClass, mass, part, num);
         Space space(&tempSpace);
-        spaces[i] = space;
+        originalSpaces[i] = space;
 #endif
     }
 
-    spaces[0].showUp();
+    originalSpaces[0].showUp();
 
     for (int i = 0; i < N; i++) {
-        spaces[i].show();
+        originalSpaces[i].show();
     }
 
-    spaces[0].showDown();
+    originalSpaces[0].showDown();
     cout << endl;
 
     Space sum;
     for (int i = 0; i < N; i++) {
-        sum = sum + spaces[i];                  //<-----
+        sum = sum + originalSpaces[i];
     }
-    cout << "Result: " << sum << endl;                  //<-----
-
+    cout << "Result: " << sum << endl;
 }
+
 
 Space& Space::operator=(const Space& space) {
     //this->mass = space.mass;

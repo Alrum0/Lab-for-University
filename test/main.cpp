@@ -1,6 +1,6 @@
 #include "Header.h"
 
-Space originalSpaces[N];
+
 
 int main()
 {
@@ -8,19 +8,17 @@ int main()
 	HANDLE h;
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	
-	Space spaces[N];
 	Space space;
 	Space temp;
 	int choice;
 	int index;
 	int index1, index2;
+	bool tableGenerated = false;
 
 	do {
 		gotoxy(65, 0);
 		cout << "Menu";
 		gotoxy(0, 0);
-
 
 		SetConsoleTextAttribute(h, 3);
 		cout << endl << "1. Будувати табличку" << endl;
@@ -38,49 +36,64 @@ int main()
 
 		switch (choice) {
 		case 1:
-			space.activeTask();
-			for (int i = 0; i < N; i++) {
-				spaces[i] = originalSpaces[i];
+			if (!tableGenerated) {
+				space.activeTask();
+				tableGenerated = true;
+			}
+			else {
+				cout << "Таблиця вже згенерована! Ви можете змiнити її або порiвняти рядки." << endl;
 			}
 			break;
 		case 2:
-			cout << "Введіть індекс рядка, який бажаєте змінити: ";
-			cin >> index;
-			if (index >= 0 && index < N) {
-				if (index == 0 || index == 3) {
-					originalSpaces[index] = space;
-				}
-				cout << "Введіть нові дані для рядка" << index << ":" << endl;
-				cin >> originalSpaces[index];
-				cout << "Рядок успішно змінено!" << endl;
+			if (!tableGenerated) {
+				cout << "Спочатку потрiбно згенерувати таблицю!" << endl;
 			}
 			else {
-				cout << "Неправильний індекс рядка!" << endl;
+				cout << "Введiть iндекс рядка, який бажаєте змiнити: ";
+				cin >> index;
+				if (index >= 0 && index < N) {
+					cout << "Введiть новi данi для рядка" << index << ":" << endl;
+					cin >> Space::originalSpaces[index];
+					cout << "Рядок успiшно змiнено!" << endl;
+				}
+				else {
+					cout << "Неправильний iндекс рядка!" << endl;
+				}
 			}
 			break;
 		case 3:
-			cout << "Введіть індекс першого рядка: ";
-			cin >> index1;
-			cout << "Введіть індекс для другого рядка: ";
-			cin >> index2;
-			if (index1 >= 0 && index1 < N && index2 >= 0 && index2 < N) {
-				if (originalSpaces[index1] == originalSpaces[index2]) {
-					originalSpaces[index1].show();
-					originalSpaces[index2].show();
-					cout << "Рядки " << index1 << " і " << index2 << " співпадають!" << endl;
-				}
-				else {
-					cout << "Рядки " << index1 << " і " << index2 << " не співпадають!" << endl;
-				}
+			if (!tableGenerated) {
+				cout << "Спочатку потрiбно згенерувати таблицю!" << endl;
 			}
 			else {
-				cout << "Неправильний індекс рядків!" << endl;
+				cout << "Введiть iндекс першого рядка: ";
+				cin >> index1;
+				cout << "Введiть iндекс для другого рядка: ";
+				cin >> index2;
+				if (index1 >= 0 && index1 < N && index2 >= 0 && index2 < N) {
+					if (Space::originalSpaces[index1] == Space::originalSpaces[index2]) {
+						Space::originalSpaces[index1].show();
+						Space::originalSpaces[index2].show();
+						cout << "Рядки " << index1 << " i " << index2 << " спiвпадають!" << endl;
+					}
+					else {
+						cout << "Рядки " << index1 << " i " << index2 << " не спiвпадають!" << endl;
+					}
+				}
+				else {
+					cout << "Неправильний iндекс рядкiв!" << endl;
+				}
 			}
 			break;
 		case 4:
-			cout << "Оновлена таблиця:" << endl;
-			for (int i = 0; i < N; i++) {
-				cout << "Рядок " << i << ": " << originalSpaces[i] << endl;
+			if (!tableGenerated) {
+				cout << "Спочатку потрiбно згенерувати таблицю!" << endl;
+			}
+			else {
+				cout << "Оновлена таблиця:" << endl;
+				for (int i = 0; i < N; i++) {
+					 Space::originalSpaces[i].show();
+				}
 			}
 			break;
 		case 7:
@@ -95,4 +108,3 @@ int main()
 		system("cls");
 	} while (choice != 7);
 }
-

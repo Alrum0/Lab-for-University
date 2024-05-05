@@ -31,6 +31,15 @@ public:
 };
 
 
+class Student :public Person {
+private:
+	int marks[5];
+public:
+	virtual int who() { return 2; }
+	virtual int ask() {}
+	virtual void print() {}
+};
+
 
 
 

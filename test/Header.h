@@ -15,7 +15,7 @@ using namespace std;
 #define USE_CONSTRUCTOR 1 // 1 - default, 2 - constructor with arguments 3 - constructor of copy
 #define LOW_BOUND 1
 #define HIGH_BOUND 100
-#define INPUT_TYPE 2 // 1 - from console, 2 - random
+#define INPUT_TYPE 1 // 1 - from console, 2 - random
 
 void gotoxy(int x, int y);
 
