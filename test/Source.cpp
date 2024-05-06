@@ -19,71 +19,7 @@ void gotoxy(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), crds);
 }
 
-//void Space::activeTask() {
-//
-//    Space spaces[N];
-//    string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//    srand(time(NULL));
-//
-//
-//    for (int i = 0; i < N; i++) {
-//#if INPUT_TYPE == 1
-//        cout << "Введiть спектральний клас: ";
-//        cin >> spectralClass;
-//        cout << "Введiть масу: ";
-//        cin >> mass;
-//        cout << "Введiть частку: ";
-//        cin >> part;
-//        cout << "Введiть кiлькiсть: ";
-//        cin >> num;
-////TODO: fix operator>> for input infotmation
-//        /*cin >> spaces[i];*/                               //<-----
-//
-//        spaces[i] = Space(spectralClass, mass, part, num);
-//
-//#elif INPUT_TYPE == 2
-//        spectralClass = letters[rand() % letters.size() + 1];
-//        mass = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
-//        part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
-//        num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
-//
-//        spaces[i] = Space().operator()(spectralClass, mass, part, num);          // <----- // <-----
-//#endif				
-//
-//#if	USE_CONSTRUCTOR == 1
-//        //using default constructor
-//        spaces[i].setSpectralClass(spectralClass);
-//        spaces[i].setMass(mass);
-//        spaces[i].setPart(part);
-//        spaces[i].setNum(num);
-//#elif USE_CONSTRUCTOR == 2
-//        // using constructor with arguments
-//        spaces[i] = { spectralClass, mass, part, num };
-//
-//#elif USE_CONSTRUCTOR == 3
-//        // using constructor of copy
-//        Space tempSpace(spectralClass, mass, part, num);
-//        Space space(&tempSpace);
-//        spaces[i] = space;
-//#endif
-//    }
-//
-//    spaces[0].showUp();
-//
-//    for (int i = 0; i < N; i++) {
-//        spaces[i].show();
-//    }
-//
-//    spaces[0].showDown();
-//    cout << endl;
-//
-//    Space sum;
-//    for (int i = 0; i < N; i++) {
-//        sum = sum + spaces[i];                  //<-----
-//    }
-//    cout << "Result: " << sum << endl;                  //<-----
-//
-//}
+
 
 void Space::activeTask() {
     string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -147,12 +83,6 @@ void Space::activeTask() {
 
 
 Space& Space::operator=(const Space& space) {
-    //this->mass = space.mass;
-    //this->part = space.part;
-    //this->num = space.num;
-    //this->spectralClass = space.spectralClass;
-
-    //return *this;
     if (this == &space) 
         return *this;
 
@@ -273,7 +203,7 @@ void Menu::menuActive() {
                 cout << "Спочатку потрiбно згенерувати таблицю!" << endl;
             }
             else {
-                cout << "Введiть iндекс рядка, який бажаєте змiнити: ";
+                cout << "Введiть iндекс рядка, який бажаєте змiнити(Примiтка, нумерацiя рядкiв починається з 0): ";
                 cin >> index;
                 if (index >= 0 && index < N) {
                     cout << "Введiть новi данi для рядка" << index << ":" << endl;
@@ -290,7 +220,7 @@ void Menu::menuActive() {
                 cout << "Спочатку потрiбно згенерувати таблицю!" << endl;
             }
             else {
-                cout << "Введiть iндекс першого рядка: ";
+                cout << "Введiть iндекс першого рядка(Примiтка, нумерацiя рядкiв починається з 0): ";
                 cin >> index1;
                 cout << "Введiть iндекс для другого рядка: ";
                 cin >> index2;
@@ -302,6 +232,8 @@ void Menu::menuActive() {
                     }
                     else {
                         cout << "Рядки " << index1 << " i " << index2 << " не спiвпадають!" << endl;
+                        Space::originalSpaces[index1].show();
+                        Space::originalSpaces[index2].show();
                     }
                 }
                 else {
@@ -315,9 +247,11 @@ void Menu::menuActive() {
             }
             else {
                 cout << "Оновлена таблиця:" << endl;
+                Space::originalSpaces[0].showUp();
                 for (int i = 0; i < N; i++) {
                     Space::originalSpaces[i].show();
                 }
+                Space::originalSpaces[0].showDown();
             }
             break;
         case 7:
