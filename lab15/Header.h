@@ -3,6 +3,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 
@@ -96,9 +97,6 @@ public:
 	}
 };
 
-
-
-
 class SOBAKA {
 protected:
 	double weight;
@@ -127,6 +125,88 @@ public:
 	DOG(double weight, int age, double height) : SOBAKA(weight, age), height(height){}
 	void show();
 	void golos() override;
+};
+
+class Book{
+protected:
+	string title;
+	string author;
+	int pages;
+public:
+	Book(string title, string author, int pages) : title(title), author(author), pages(pages) {}
+	void show();
+};
+class Library :public Book{
+protected:
+	bool available;
+	int copiesInStock;
+	int copiesRegistered;
+public:
+	Library(string title, string author, int pages, bool avaliable, int copiesInStock, int copiesRegistered) 
+		: Book(title, author, pages), available(available), copiesInStock(copiesInStock), copiesRegistered(copiesRegistered){}
+	void show();
+};
+
+
+class Persona {
+protected:
+	string name;
+	int age;
+public:
+	Persona(string n, int a) : name(n), age(a) {}
+	virtual void print() const = 0;
+	virtual int who() const = 0;
+	virtual int ask() const = 0;
+	int getAge() const;
+};
+
+
+class Prepod : public Persona {
+protected:
+	string discipline;
+	int degree;
+public:
+	Prepod(string n, int a, string d, int deg) : Persona(n, a), discipline(d), degree(deg) {}
+	void print() const override;
+	int who() const override;
+	int ask() const override;
+};
+
+class Student : public Persona {
+protected:
+	int marks[5];
+public:
+	Student(string n, int a) : Persona(n, a) {
+		srand(time(NULL));
+		for (int i = 0; i < 5; ++i) {
+			marks[i] = rand() % 4 + 2;
+		}
+	}
+	void print() const override;
+	int who() const override;
+	int ask() const override;
+};
+
+
+class Zav_kaf : public Prepod {
+	string position;
+public:
+	Zav_kaf(string n, int a, string d, int deg, string pos) : Prepod(n, a, d, deg), position(pos) {}
+	void print() const override;
+	int who() const override;
+	int ask() const override;
+};
+
+class VUZ {
+public:
+	vector<Persona*> Shtat;
+	void addPersona(Persona* p) {
+		Shtat.push_back(p);
+	}
+	void printTeachersUnder50() const;
+	void printStudents() const;
+	void printTeachers() const;
+	void printStudentsWithDebt() const;
 };
 
 
@@ -158,53 +238,42 @@ public:
 		dog1.golos();
 
 	}
+	static void task4() {
+		VUZ university;
+
+
+		university.addPersona(new Prepod("Андрiй Анатолiйович", 45, "Програмування", 1));
+		university.addPersona(new Prepod("Артур Iванов", 55, "Фізика", 2));
+		university.addPersona(new Student("Ростислав Андрiйович", 20));
+		university.addPersona(new Student("Валерiя Станiславiвна", 22));
+		university.addPersona(new Student("Анастасiя Юрiївна", 19));
+		university.addPersona(new Student("Iгор Миколайович", 17));
+		university.addPersona(new Student("Алiса Андрiївна ", 18));
+		university.addPersona(new Zav_kaf("Богдан Богданович", 48, "Комп'ютернi науки", 2, "Завiдувач кафедри"));
+
+		
+		university.printStudents();
+		cout << endl;
+		university.printStudentsWithDebt();
+		cout << endl;
+		university.printTeachers();
+		cout << endl;
+		university.printTeachersUnder50();
+
+		for (auto person : university.Shtat) {
+			delete person;
+		}
+	}
+};
+
+class Menu {
+protected:
+	int choose;
+public:
+	void MenuAct();
 };
 
 
-
-
-
-
-
-
-
-
-
-//class Person {
-//private:
-//	string name;
-//	int age;
-//public:
-//	virtual void print() = 0;
-//	virtual int who() = 0;
-//	virtual string ask() = 0;
-//
-//	string getname();
-//		int getage();
-//
-//	void setname(string name) { this->name = name; }
-//	void setage(string name) { this->name = name; }
-//};
-//
-//class Prepod :public Person {
-//private:
-//	string subject;
-//	string quality;
-//public:
-//	virtual int who() { return 1; }
-//	virtual string ask() { return quality; }
-//	virtual void print() {}
-//};
-
-
-//class Student :public Person {
-//private:
-//	int marks[5];
-//public:
-//	virtual int who() { return 2; }
-//	virtual int ask() {}
-//	virtual void print() {}
-//};
 
 
 

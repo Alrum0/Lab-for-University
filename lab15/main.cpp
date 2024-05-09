@@ -2,8 +2,7 @@
 
 int main() {
 	setlocale(LC_ALL, "ukr");
-	Starter::main();
-	cout << "______________________________" <<endl;
-	Starter::task1();
+	Menu menu;
+	menu.MenuAct();
 }
 
