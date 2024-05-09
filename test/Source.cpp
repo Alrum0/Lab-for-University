@@ -249,7 +249,7 @@ void Menu::menuActive() {
                 cout << "ќновлена таблиц€:" << endl;
                 Space::originalSpaces[0].showUp();
                 for (int i = 0; i < N; i++) {
-                    Space::originalSpaces[i].show();
+                    cout << Space::originalSpaces[i] << endl;
                 }
                 Space::originalSpaces[0].showDown();
             }

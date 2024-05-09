@@ -5,12 +5,7 @@ float Space::getMass() { return mass; }
 float Space::getPart() { return part; }
 auto Space::getNum() { return num; }
 
-//Space::Space() {
-//    spectralClass = 'A';
-//    mass = 2.7;
-//    this->part = 8.8;
-//    num = 0;
-//}
+
 
 void Space::setSpectralClass(char SpectralClass) { this->spectralClass = SpectralClass; }
 void Space::setMass(float mass) { this->mass = mass; }
