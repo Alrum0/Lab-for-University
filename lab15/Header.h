@@ -96,6 +96,40 @@ public:
 	}
 };
 
+
+
+
+class SOBAKA {
+protected:
+	double weight;
+	int age;
+public:
+	SOBAKA(double weight, int age) : weight(weight), age(age){}
+	void show();
+	void K();
+	void D();
+	virtual void golos();
+};
+
+class SPANIEL :public SOBAKA {
+protected:
+	string color;
+public:
+	SPANIEL(double weight, int age, string color) : SOBAKA(weight, age), color(color){}
+	void show();
+	void golos() override;
+};
+
+class DOG :public SOBAKA {
+protected:
+	double height;
+public:
+	DOG(double weight, int age, double height) : SOBAKA(weight, age), height(height){}
+	void show();
+	void golos() override;
+};
+
+
 class Starter {
 public:
 	static void main() {
@@ -106,17 +140,25 @@ public:
 		cout << "CONTENT OF CLASS D5:" << endl;
 		d5.show();
 	}
+	static void task1() {
+		SOBAKA sobaka1(8.5, 5);
+		SPANIEL spaniel1(12, 3, "Brown");
+		DOG dog1(15, 7, 0.6);
+
+		std::cout << "SOBAKA:\n";
+		sobaka1.show();
+		sobaka1.golos();
+
+		std::cout << "\nSPANIEL:\n";
+		spaniel1.show();
+		spaniel1.golos();
+
+		std::cout << "\nDOG:\n";
+		dog1.show();
+		dog1.golos();
+
+	}
 };
-
-
-
-
-
-
-
-
-
-
 
 
 
