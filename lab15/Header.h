@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 
 
@@ -127,26 +128,29 @@ public:
 	void golos() override;
 };
 
-class Book{
+class BOOK {
 protected:
 	string title;
 	string author;
 	int pages;
+	bool available; 
 public:
-	Book(string title, string author, int pages) : title(title), author(author), pages(pages) {}
-	void show();
-};
-class Library :public Book{
-protected:
-	bool available;
-	int copiesInStock;
-	int copiesRegistered;
-public:
-	Library(string title, string author, int pages, bool avaliable, int copiesInStock, int copiesRegistered) 
-		: Book(title, author, pages), available(available), copiesInStock(copiesInStock), copiesRegistered(copiesRegistered){}
-	void show();
+	BOOK(string title, string author, int pages) : title(title), author(author), pages(pages), available(true) {}
+
+	void printInfo() const;
+
+	string getTitle() const { return title; }
+	bool isAvailable() const { return available; } 
+	void borrowBook() { available = false; } 
+	void returnBook() { available = true; } 
 };
 
+class LIBRARY {
+public:
+	void printLibraryBooks(const vector<BOOK>& books) const;
+	void borrowBook(vector<BOOK>& books);
+	void returnBook(vector<BOOK>& books);
+};
 
 class Persona {
 protected:
@@ -212,58 +216,10 @@ public:
 
 class Starter {
 public:
-	static void main() {
-		D4 d4;
-		D5 d5;
-		cout << "CONTENT OF CLASS D4:" << endl;
-		d4.show();
-		cout << "CONTENT OF CLASS D5:" << endl;
-		d5.show();
-	}
-	static void task1() {
-		SOBAKA sobaka1(8.5, 5);
-		SPANIEL spaniel1(12, 3, "Brown");
-		DOG dog1(15, 7, 0.6);
-
-		std::cout << "SOBAKA:\n";
-		sobaka1.show();
-		sobaka1.golos();
-
-		std::cout << "\nSPANIEL:\n";
-		spaniel1.show();
-		spaniel1.golos();
-
-		std::cout << "\nDOG:\n";
-		dog1.show();
-		dog1.golos();
-
-	}
-	static void task4() {
-		VUZ university;
-
-
-		university.addPersona(new Prepod("Андрiй Анатолiйович", 45, "Програмування", 1));
-		university.addPersona(new Prepod("Артур Iванов", 55, "Фізика", 2));
-		university.addPersona(new Student("Ростислав Андрiйович", 20));
-		university.addPersona(new Student("Валерiя Станiславiвна", 22));
-		university.addPersona(new Student("Анастасiя Юрiївна", 19));
-		university.addPersona(new Student("Iгор Миколайович", 17));
-		university.addPersona(new Student("Алiса Андрiївна ", 18));
-		university.addPersona(new Zav_kaf("Богдан Богданович", 48, "Комп'ютернi науки", 2, "Завiдувач кафедри"));
-
-		
-		university.printStudents();
-		cout << endl;
-		university.printStudentsWithDebt();
-		cout << endl;
-		university.printTeachers();
-		cout << endl;
-		university.printTeachersUnder50();
-
-		for (auto person : university.Shtat) {
-			delete person;
-		}
-	}
+	static void main();
+	static void task1();
+	static void task3();
+	static void task4();
 };
 
 class Menu {

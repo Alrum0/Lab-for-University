@@ -25,13 +25,68 @@ void DOG::show() {
 void DOG::golos() {
 	SOBAKA::golos();
 }
-void Book::show(){ cout << "Назва: " << title << ", Автор: " << author << ", Сторінки: " << pages << endl; }
-void Library::show() {
-	cout << "Доступнiсть: " << (available ? "Так" : "Нi") << ", Копiї в наявностi: " << copiesInStock 
-		 << ", Зареєстровані копії: " << copiesRegistered << endl;
-	Book::show();
+
+void BOOK::printInfo() const {
+	cout << "Назва: " << title << endl;
+	cout << "Автор: " << author << endl;
+	cout << "Сторiнок: " << pages << endl;
+	cout << "Доступнiсть: " << (available ? "Так" : "Нi") << endl;
 }
 
+void LIBRARY::printLibraryBooks(const vector<BOOK>& books) const {
+	cout << "Доступнi книги в бiблiотецi: " << endl;
+	for (const auto& book : books) {
+		book.printInfo();
+		cout << "----------------------------------------" << endl;
+	}
+}
+void LIBRARY::borrowBook(vector<BOOK>& books) {
+	printLibraryBooks(books);
+	cout << "Введiть назву книги, яку хочете забрати: ";
+	string searchTitle;
+	cin.ignore();
+	getline(cin, searchTitle);
+
+	bool found = false;
+	for (auto& book : books) {
+		if (book.getTitle() == searchTitle) {
+			found = true;
+			if (book.isAvailable()) {
+				book.borrowBook();
+				cout << "Книга успiшно позичена!" << endl;
+			}
+			else {
+				cout << "Вибачте, книга недоступна" << endl;
+			}
+			break;
+		}
+	}
+
+	if (!found) {
+		cout << "Книга не знайдена" << endl;
+	}
+}
+void LIBRARY::returnBook(vector<BOOK>& books) {
+	printLibraryBooks(books);
+	cout << "Введiть назву книги, яку хочете повернути: ";
+	string searchTitle;
+	cin.ignore();
+	getline(cin, searchTitle);
+
+	bool found = false;
+	for (auto& book : books) {
+		if (book.getTitle() == searchTitle) {
+			found = true;
+			book.returnBook();
+			cout << "Книга успiшно повернена!" << endl;
+			break;
+		}
+	}
+
+	if (!found) {
+		cout << "Книга не знайдена" << endl;
+	}
+}
 int Persona::getAge() const { return age; }
 
 void Prepod::print() const {
@@ -123,6 +178,106 @@ void VUZ::printStudentsWithDebt() const {
 	}
 }
 
+//////////////////////////////////////
+void Starter::main() {
+	D4 d4;
+	D5 d5;
+	cout << "CONTENT OF CLASS D4:" << endl;
+	d4.show();
+	cout << "CONTENT OF CLASS D5:" << endl;
+	d5.show();
+}
+void Starter::task1() {
+	SOBAKA sobaka1(8.5, 5);
+	SPANIEL spaniel1(12, 3, "Brown");
+	DOG dog1(15, 7, 0.6);
+
+	std::cout << "SOBAKA:\n";
+	sobaka1.show();
+	sobaka1.golos();
+
+	std::cout << "\nSPANIEL:\n";
+	spaniel1.show();
+	spaniel1.golos();
+
+	std::cout << "\nDOG:\n";
+	dog1.show();
+	dog1.golos();
+}
+void Starter::task3() {
+	vector<BOOK> books = {
+			BOOK("Volodar", "Джон Роналд Руел Толкiн", 200),
+			BOOK("1984", "Джордж Орвелл", 300),
+			BOOK("DUNA", "Френк Герберт", 250)
+	};
+
+	LIBRARY library;
+
+	int choice;
+	do {
+		cout << "Menu:" << endl;
+		cout << "1. Перевiрити доступнiсть книги за назвою" << endl;
+		cout << "2. Позичити книгу" << endl;
+		cout << "3. Повернути книгу" << endl;
+		cout << "4. Вихiд" << endl;
+		cout << "Enter your choice: ";
+		cin >> choice;
+
+		switch (choice) {
+		case 1: {
+			library.printLibraryBooks(books);
+			break;
+		}
+		case 2: {
+			library.borrowBook(books);
+			break;
+		}
+		case 3: {
+			library.returnBook(books);
+			break;
+		}
+		case 4: {
+			cout << "Вихiд програми." << endl;
+			break;
+		}
+		default: {
+			cout << "Неправильний вибiр. Будь ласка, введiть число вiд 1 до 4." << endl;
+		}
+		}
+
+		system("pause");
+		system("cls");
+	} while (choice != 4);
+}
+void Starter::task4() {
+	VUZ university;
+
+
+	university.addPersona(new Prepod("Андрiй Анатолiйович", 45, "Програмування", 1));
+	university.addPersona(new Prepod("Артур Iванов", 55, "Фізика", 2));
+	university.addPersona(new Student("Ростислав Андрiйович", 20));
+	university.addPersona(new Student("Валерiя Станiславiвна", 22));
+	university.addPersona(new Student("Анастасiя Юрiївна", 19));
+	university.addPersona(new Student("Iгор Миколайович", 17));
+	university.addPersona(new Student("Алiса Андрiївна ", 18));
+	university.addPersona(new Zav_kaf("Богдан Богданович", 48, "Комп'ютернi науки", 2, "Завiдувач кафедри"));
+
+
+	university.printStudents();
+	cout << endl;
+	university.printStudentsWithDebt();
+	cout << endl;
+	university.printTeachers();
+	cout << endl;
+	university.printTeachersUnder50();
+
+	for (auto person : university.Shtat) {
+		delete person;
+	}
+}
+////////////////////////////////////////////
+
+
 void Menu::MenuAct() {
 	do {
 		cout << "1. Task 1" << endl;
@@ -140,6 +295,7 @@ void Menu::MenuAct() {
 			Starter::task1();
 			break;
 		case 3:
+			Starter::task3();
 			break;
 		case 4:
 			Starter::task4();
