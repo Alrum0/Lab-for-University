@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <Windows.h>
+#include <ctime>
 
 #define MAX_COUNT 15
 #define MIN_COUNT 5

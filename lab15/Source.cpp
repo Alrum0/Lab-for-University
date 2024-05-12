@@ -208,9 +208,9 @@ void VUZ::generateRandomData() {
 	}*/
 	
 	int count = rand() % (MAX_COUNT - MIN_COUNT + 1) + MIN_COUNT;
-	vector<string> availableNames = { "Іван", "Петро", "Марія", "Олена", "Олександр", "Світлана", "Андрій", "Юлія", "Віталій", "Анастасія" };
-	vector<string> availableLastNames = { "Петрович", "Іванович", "Олексіївна", "Юріївна", "Олександрович", "Ігорівна", "Михайлович", "Анатоліївна", "Володимирович", "Борисівна" };
-	string disciplines[MAX_DISCIPLINES] = { "Математика", "Фізика", "Інформатика", "Хімія", "Біологія", "Історія", "Географія", "Економіка", "Мови", "Музика" };
+	vector<string> availableNames = { "Iван", "Петро", "Марiя", "Олена", "Олександр", "Свiтлана", "Андрiй", "Юлiя", "Вiталiй", "Анастасiя" };
+	vector<string> availableLastNames = { "Петрович", "Iванович", "Олексiївна", "Юрiївна", "Олександрович", "Ігорiвна", "Михайлович", "Анатол]ївна", "Володимирович", "Борисівна" };
+	string disciplines[MAX_DISCIPLINES] = { "Математика", "Фiзика", "Iнформатика", "Хiмiя", "Бiологiя", "Iсторiя", "Географiя", "Економiка", "Мови", "Музика" };
 	for (int i = 0; i < count; ++i) {
 		if (availableNames.empty() || availableLastNames.empty()) {
 			break; 
