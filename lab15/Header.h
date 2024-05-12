@@ -5,6 +5,20 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <Windows.h>
+
+#define MAX_COUNT 15
+#define MIN_COUNT 5
+#define MAX_AGE 50
+#define MIN_AGE 20
+#define TYPE 3
+#define DEGREE 3
+#define MAX_NAMES 10
+#define MAX_LAST_NAMES 10
+#define MAX_DISCIPLINES 10
+
+
+
 using namespace std;
 
 
@@ -117,6 +131,8 @@ public:
 	SPANIEL(double weight, int age, string color) : SOBAKA(weight, age), color(color){}
 	void show();
 	void golos() override;
+	void K();
+	void D();
 };
 
 class DOG :public SOBAKA {
@@ -126,6 +142,8 @@ public:
 	DOG(double weight, int age, double height) : SOBAKA(weight, age), height(height){}
 	void show();
 	void golos() override;
+	void K();
+	void D();
 };
 
 class BOOK {
@@ -181,7 +199,6 @@ protected:
 	int marks[5];
 public:
 	Student(string n, int a) : Persona(n, a) {
-		srand(time(NULL));
 		for (int i = 0; i < 5; ++i) {
 			marks[i] = rand() % 4 + 2;
 		}
@@ -204,9 +221,11 @@ public:
 class VUZ {
 public:
 	vector<Persona*> Shtat;
+	vector<string> Names;
 	void addPersona(Persona* p) {
 		Shtat.push_back(p);
 	}
+	void generateRandomData();
 	void printTeachersUnder50() const;
 	void printStudents() const;
 	void printTeachers() const;
@@ -216,6 +235,7 @@ public:
 
 class Starter {
 public:
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	static void main();
 	static void task1();
 	static void task3();
@@ -225,6 +245,7 @@ public:
 class Menu {
 protected:
 	int choose;
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 public:
 	void MenuAct();
 };

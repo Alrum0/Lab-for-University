@@ -3,6 +3,10 @@
 void SOBAKA::show() { cout << "Вага: " << weight << " кг, Вiк: " << age <<endl; }
 void SOBAKA::K() { cout << "Це конструктор класу SOBAKA" << endl; }
 void SOBAKA::D() { cout << "Це деструктор класу SOBAKA" << endl; }
+void SPANIEL::K() { cout << "Це конструктор класу SPANIEL" << endl; }
+void SPANIEL::D() { cout << "Це деструктор класу SPANIEL" << endl; }
+void DOG::K() { cout << "Це конструктор класу DOG" << endl; }
+void DOG::D() { cout << "Це деструктор класу DOG" << endl; }
 void SOBAKA::golos(){
 	if (weight >= 10) {
 		cout << "ГАВ" << endl;
@@ -177,15 +181,127 @@ void VUZ::printStudentsWithDebt() const {
 		}
 	}
 }
+void VUZ::generateRandomData() {
+	/*srand(time(NULL));
+	int count = rand() % (MAX_COUNT - MIN_COUNT + 1) + MIN_COUNT;
+	string randNames[] = { "Іван","Петро","Марія" ,"Андрій" ,"Олена" ,"Олександр" ,"Світлана" ,"Валерія" ,"Микита" ,"Анатолій" ,"Юлія" ,"Віталій" };
+	string randLastNames[] = { "Петрович","Іванович", "Олнксіївна", "Юріївна", "Олександрович", "Ігорівна", "Михайлович", "Анатоліївна", "Володимирович", "Борисівна" };
+	string disciplines[MAX_DISCIPLINES] = { "Математика","Фізика", "Інформатика", "Хімія", "Біологія","Історія","Географія","Мова" };
+	for (int i = 0; i < count; i++) {
+		string name = randNames[rand() % MAX_NAMES] + " " + randLastNames[rand() % MAX_LAST_NAMES];
+		int age = rand() % (MAX_AGE - MIN_AGE + 1) + MIN_AGE;
+		int type = rand() % TYPE;
+		if (type == 0) {
+			string discipline = "Предмет: " + disciplines[rand() % MAX_DISCIPLINES];
+			int degree = rand() % DEGREE;
+			addPersona(new Prepod(name, age, discipline, degree));
+		}
+		else if (type == 1) {
+			addPersona(new Student(name, age));
+		}
+		else {
+			string discipline = disciplines[rand() % MAX_DISCIPLINES];
+			int degree = rand() % DEGREE;
+			string position = "Посада " + to_string(i);
+			addPersona(new Zav_kaf(name, age, discipline, degree, position));
+		}
+	}*/
+	
+	int count = rand() % (MAX_COUNT - MIN_COUNT + 1) + MIN_COUNT;
+	vector<string> availableNames = { "Іван", "Петро", "Марія", "Олена", "Олександр", "Світлана", "Андрій", "Юлія", "Віталій", "Анастасія" };
+	vector<string> availableLastNames = { "Петрович", "Іванович", "Олексіївна", "Юріївна", "Олександрович", "Ігорівна", "Михайлович", "Анатоліївна", "Володимирович", "Борисівна" };
+	string disciplines[MAX_DISCIPLINES] = { "Математика", "Фізика", "Інформатика", "Хімія", "Біологія", "Історія", "Географія", "Економіка", "Мови", "Музика" };
+	for (int i = 0; i < count; ++i) {
+		if (availableNames.empty() || availableLastNames.empty()) {
+			break; 
+		}
+		string name = availableNames[rand() % availableNames.size()];
+		availableNames.erase(remove(availableNames.begin(), availableNames.end(), name), availableNames.end()); 
+		string lastName = availableLastNames[rand() % availableLastNames.size()];
+		availableLastNames.erase(remove(availableLastNames.begin(), availableLastNames.end(), lastName), availableLastNames.end()); 
+		int age = rand() % (MAX_AGE - MIN_AGE + 1) + MIN_AGE; 
+		int type = rand() % TYPE; 
+		if (type == 0) {
+			string discipline = disciplines[rand() % MAX_DISCIPLINES];
+			int degree = rand() % DEGREE + 1; 
+			addPersona(new Prepod(name + " " + lastName, age, discipline, degree));
+		}
+		else if (type == 1) {
+			addPersona(new Student(name + " " + lastName, age));
+		}
+		else {
+			string discipline = disciplines[rand() % MAX_DISCIPLINES];
+			int degree = rand() % DEGREE + 1; 
+			string position = "Посада " + to_string(i);
+			addPersona(new Zav_kaf(name + " " + lastName, age, discipline, degree, position));
+		}
+	}
+}
 
 //////////////////////////////////////
 void Starter::main() {
+	int add;
+	B b;
+	D1 d1;
+	D2 d2;
+	D3 d3;
 	D4 d4;
 	D5 d5;
-	cout << "CONTENT OF CLASS D4:" << endl;
-	d4.show();
-	cout << "CONTENT OF CLASS D5:" << endl;
-	d5.show();
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	do {
+		cout << "Меню для вибору класу: " << endl;
+		SetConsoleTextAttribute(h, 3);
+		cout << "1. B" << endl;
+		cout << "2. D1" << endl;
+		cout << "3. D2" << endl;
+		cout << "4. D3" << endl;
+		cout << "5. D4" << endl;
+		cout << "6. D5" << endl;
+		SetConsoleTextAttribute(h, 4);
+		cout << "7. Вихiд" << endl;
+		SetConsoleTextAttribute(h, 6);
+		cout << "Обери один iз запропонованих варiантiв: ";
+		SetConsoleTextAttribute(h, 7);
+		cin >> add;
+
+		switch (add)
+		{
+		case 1:
+			cout << "CONTENT OF CLASS B:" << endl;
+			b.show();
+			break;
+		case 2:
+			cout << "CONTENT OF CLASS D1:" << endl;
+			d1.show();
+			break;
+		case 3:
+			cout << "CONTENT OF CLASS D2:" << endl;
+			d2.show();
+			break;
+		case 4:
+			cout << "CONTENT OF CLASS D3:" << endl;
+			d3.show();
+			break;
+		case 5:
+			cout << "CONTENT OF CLASS D4:" << endl;
+			d4.show();
+			break;
+		case 6:
+			cout << "CONTENT OF CLASS D5:" << endl;
+			d5.show();
+			break;
+		case 7:
+			cout << "Bye" <<endl;
+			break;
+		default: 
+			cout << "Incorrect choice";
+			break;
+		}
+		system("pause");
+		system("cls");
+
+	} while (add != 7);
 }
 void Starter::task1() {
 	SOBAKA sobaka1(8.5, 5);
@@ -193,14 +309,20 @@ void Starter::task1() {
 	DOG dog1(15, 7, 0.6);
 
 	std::cout << "SOBAKA:\n";
+	sobaka1.K();
+	sobaka1.D();
 	sobaka1.show();
 	sobaka1.golos();
 
 	std::cout << "\nSPANIEL:\n";
+	spaniel1.K();
+	spaniel1.D();
 	spaniel1.show();
 	spaniel1.golos();
 
 	std::cout << "\nDOG:\n";
+	dog1.K();
+	dog1.D();
 	dog1.show();
 	dog1.golos();
 }
@@ -213,14 +335,19 @@ void Starter::task3() {
 
 	LIBRARY library;
 
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	int choice;
 	do {
-		cout << "Menu:" << endl;
+		cout << "Меню:" << endl;
+		SetConsoleTextAttribute(h, 3);
 		cout << "1. Перевiрити доступнiсть книги за назвою" << endl;
 		cout << "2. Позичити книгу" << endl;
 		cout << "3. Повернути книгу" << endl;
+		SetConsoleTextAttribute(h, 4);
 		cout << "4. Вихiд" << endl;
-		cout << "Enter your choice: ";
+		SetConsoleTextAttribute(h, 6);
+		cout << "Обери один iз запропонованих варiантiв: ";
+		SetConsoleTextAttribute(h, 7);
 		cin >> choice;
 
 		switch (choice) {
@@ -253,16 +380,16 @@ void Starter::task4() {
 	VUZ university;
 
 
-	university.addPersona(new Prepod("Андрiй Анатолiйович", 45, "Програмування", 1));
-	university.addPersona(new Prepod("Артур Iванов", 55, "Фізика", 2));
-	university.addPersona(new Student("Ростислав Андрiйович", 20));
-	university.addPersona(new Student("Валерiя Станiславiвна", 22));
-	university.addPersona(new Student("Анастасiя Юрiївна", 19));
-	university.addPersona(new Student("Iгор Миколайович", 17));
-	university.addPersona(new Student("Алiса Андрiївна ", 18));
-	university.addPersona(new Zav_kaf("Богдан Богданович", 48, "Комп'ютернi науки", 2, "Завiдувач кафедри"));
+	//university.addPersona(new Prepod("Андрiй Анатолiйович", 45, "Програмування", 1));
+	//university.addPersona(new Prepod("Артур Iванов", 55, "Фізика", 2));
+	//university.addPersona(new Student("Ростислав Андрiйович", 20));
+	//university.addPersona(new Student("Валерiя Станiславiвна", 22));
+	//university.addPersona(new Student("Анастасiя Юрiївна", 19));
+	//university.addPersona(new Student("Iгор Миколайович", 17));
+	//university.addPersona(new Student("Алiса Андрiївна ", 18));
+	//university.addPersona(new Zav_kaf("Богдан Богданович", 48, "Комп'ютернi науки", 2, "Завiдувач кафедри"));
 
-
+	university.generateRandomData();
 	university.printStudents();
 	cout << endl;
 	university.printStudentsWithDebt();
@@ -280,11 +407,17 @@ void Starter::task4() {
 
 void Menu::MenuAct() {
 	do {
-		cout << "1. Task 1" << endl;
-		cout << "2. Task 2" << endl;
-		cout << "3. Task 3" << endl;
-		cout << "4. Task 4" << endl;
+		cout << "Меню:" << endl;
+		SetConsoleTextAttribute(h, 3);
+		cout << "1. Наслiдування" << endl;
+		cout << "2. Собаки" << endl;
+		cout << "3. Бiблiотека" << endl;
+		cout << "4. Унiверситет" << endl;
+		SetConsoleTextAttribute(h, 4);
 		cout << "5. Exit" << endl;
+		SetConsoleTextAttribute(h, 6);
+		cout << "Обери один iз запропонованих варiантiв: ";
+		SetConsoleTextAttribute(h, 7);
 
 		cin >> choose;
 		switch (choose){
