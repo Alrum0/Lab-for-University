@@ -10,13 +10,15 @@
 
 #define MAX_COUNT 15
 #define MIN_COUNT 5
-#define MAX_AGE 50
+#define MAX_AGE 70
 #define MIN_AGE 20
 #define TYPE 3
 #define DEGREE 3
 #define MAX_NAMES 10
 #define MAX_LAST_NAMES 10
 #define MAX_DISCIPLINES 10
+#define MIN_MARK 2
+#define MAX_MARK 5
 
 
 
@@ -201,7 +203,7 @@ protected:
 public:
 	Student(string n, int a) : Persona(n, a) {
 		for (int i = 0; i < 5; ++i) {
-			marks[i] = rand() % 4 + 2;
+			marks[i] = rand() % (MAX_MARK - MIN_MARK + 1) + MIN_MARK;
 		}
 	}
 	void print() const override;

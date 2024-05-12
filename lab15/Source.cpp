@@ -206,10 +206,9 @@ void VUZ::generateRandomData() {
 			addPersona(new Zav_kaf(name, age, discipline, degree, position));
 		}
 	}*/
-	
 	int count = rand() % (MAX_COUNT - MIN_COUNT + 1) + MIN_COUNT;
 	vector<string> availableNames = { "Iван", "Петро", "Марiя", "Олена", "Олександр", "Свiтлана", "Андрiй", "Юлiя", "Вiталiй", "Анастасiя" };
-	vector<string> availableLastNames = { "Петрович", "Iванович", "Олексiївна", "Юрiївна", "Олександрович", "Ігорiвна", "Михайлович", "Анатол]ївна", "Володимирович", "Борисівна" };
+	vector<string> availableLastNames = { "Петрович", "Iванович", "Олексiївна", "Юрiївна", "Олександрович", "Iгорiвна", "Михайлович", "Анатолiївна", "Володимирович", "Борисівна" };
 	string disciplines[MAX_DISCIPLINES] = { "Математика", "Фiзика", "Iнформатика", "Хiмiя", "Бiологiя", "Iсторiя", "Географiя", "Економiка", "Мови", "Музика" };
 	for (int i = 0; i < count; ++i) {
 		if (availableNames.empty() || availableLastNames.empty()) {
@@ -232,7 +231,7 @@ void VUZ::generateRandomData() {
 		else {
 			string discipline = disciplines[rand() % MAX_DISCIPLINES];
 			int degree = rand() % DEGREE + 1; 
-			string position = "Посада " + to_string(i);
+			string position = "Посада: " + to_string(i);
 			addPersona(new Zav_kaf(name + " " + lastName, age, discipline, degree, position));
 		}
 	}
@@ -378,16 +377,6 @@ void Starter::task3() {
 }
 void Starter::task4() {
 	VUZ university;
-
-
-	//university.addPersona(new Prepod("Андрiй Анатолiйович", 45, "Програмування", 1));
-	//university.addPersona(new Prepod("Артур Iванов", 55, "Фізика", 2));
-	//university.addPersona(new Student("Ростислав Андрiйович", 20));
-	//university.addPersona(new Student("Валерiя Станiславiвна", 22));
-	//university.addPersona(new Student("Анастасiя Юрiївна", 19));
-	//university.addPersona(new Student("Iгор Миколайович", 17));
-	//university.addPersona(new Student("Алiса Андрiївна ", 18));
-	//university.addPersona(new Zav_kaf("Богдан Богданович", 48, "Комп'ютернi науки", 2, "Завiдувач кафедри"));
 
 	university.generateRandomData();
 	university.printStudents();
