@@ -62,27 +62,14 @@ public:
 
 class COMP {
 private:
-	float real;
-	float imag;
+	float r;
+	float m;
 public:
-	COMP(): real(0), imag(0){}
-	COMP(float real, float imag) : real(real), imag(imag) {}
-
-	float getReal() const;
-	float getImag()const;
-	void read(ifstream& inFout);
-	void write(ofstream& outFout);
-	void add(const COMP& other);
+	COMP(float r = 0, float m = 0) : r(r), m(m) {}
+	void read(ifstream& in);
+	void write(ofstream& out) const;
 	friend ostream& operator<<(ostream& os, const COMP& c);
 };
-
-
-
-
-
-
-
-
 
 
 class Starter {

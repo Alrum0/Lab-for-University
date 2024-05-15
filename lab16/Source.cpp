@@ -26,19 +26,6 @@ void Space::showDown() {
 }
 
 void Space::saveArrayToFile(Space spaces[], int size, const string& filename) {
-	/*ofstream file(filename);
-	try
-	{
-		if (!file.is_open()) throw runtime_error("WARNING, THIS FILE IS NOT FOUND");
-		for (int i = 0; i < size; i++) {
-			file << spaces[i].spectralClass << " " << spaces[i].mass << " " << spaces[i].part << " " << spaces[i].num << endl;
-		}
-		file.close();
-	}
-	catch (const exception& a){
-		cout << a.what();
-	}*/
-
 #if CHOOSE_TYPE == 1
 	ofstream file(filename);
 #else
@@ -128,168 +115,18 @@ static void saveOneObjectToFile( Space& space, const string& filename) {
 	file.close();
 }
 
-float COMP::getReal() const { return real; }
-float COMP::getImag() const { return imag; }
-void COMP::read(ifstream& inFout) { inFout >> real >> imag; }
-void COMP::write(ofstream& outFout) { outFout << real << " " << imag; }
-void COMP::add(const COMP& other) {
-	real += other.getReal();
-	imag += other.getImag();
-}
 ostream& operator<<(ostream& os, const COMP& c) {
-	os << c.real << " + " << c.imag << "i";
+	os << c.r << " + " << c.m << "i";
 	return os;
 }
 
+void COMP::write(ofstream& out) const {
+	out << r << " + " << m << "i" << endl;
+}
 
-
-//void Starter::task1() {
-//
-//	Space spaces[N];
-//	string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//	char spectralClass;
-//	float mass, part;
-//	long num;
-//	vector<Space> objects;
-//	vector<string> lines;
-//	string line;
-//	int index;
-//	int ch;
-//	bool tableCreated = false;
-//
-//
-//	do {
-//		cout << "\nMENU:" << endl;
-//		cout << "1. Ввести рядкi для таблицi" << endl;
-//		cout << "2. Вивести рядкi таблицi" << endl;
-//		cout << "3. Зберегти рядки таблицi в файл" << endl;
-//		cout << "4. Вивести всi рядки таблицi з файлу" << endl;
-//		cout << "5. Зберегти один рядок таблицi в файл" << endl;
-//		cout << "6. Вивести один рядок таблицi з файлу" << endl;
-//		cout << "7. Видалення вмiсту файлу" << endl;
-//		cout << "8. Вихiд" << endl;
-//		cout << "Виберiть пункт меню: ";
-//		cin >> ch;
-//
-//		switch (ch) {
-//		case 1:
-//			if (!tableCreated) {
-//				for (int i = 0; i < N; i++) {
-//#if INPUT_TYPE == 1
-//					cout << "Введiть спектральний клас: ";
-//					cin >> spectralClass;
-//					cout << "Введiть масу: ";
-//					cin >> mass;
-//					cout << "Введiть частку: ";
-//					cin >> part;
-//					cout << "Введiть кiлькiсть: ";
-//					cin >> num;
-//
-//#elif INPUT_TYPE == 2
-//					spectralClass = letters[rand() % letters.size() + 1];
-//					mass = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
-//					part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
-//					num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
-//#endif				
-//
-//#if	USE_CONSTRUCTOR == 1
-//					//using default constructor
-//					spaces[i].setSpectralClass(spectralClass);
-//					spaces[i].setMass(mass);
-//					spaces[i].setPart(part);
-//					spaces[i].setNum(num);
-//#elif USE_CONSTRUCTOR == 2
-//					// using constructor with arguments
-//					spaces[i] = { spectralClass, mass, part, num };
-//
-//#elif USE_CONSTRUCTOR == 3
-//					// using constructor of copy
-//					Space tempSpace(spectralClass, mass, part, num);
-//					Space space(&tempSpace);
-//					spaces[i] = space;
-//#endif
-//
-//				}
-//				tableCreated = true;
-//				cout << "Таблиця усрiшно створена!";
-//			}
-//			else {
-//				cout << "Таблиця вже створена!" << endl;
-//			}
-//			break;
-//		case 2:
-//			spaces[0].showUp();
-//			for (int i = 0; i < N; i++) {
-//				spaces[i].show();
-//			}
-//			spaces[0].showDown();
-//			break;
-//		case 3:
-//			if (!tableCreated) {
-//				cout << "Таблиця не була створена!" << endl;
-//				break;
-//			}
-//			Space::saveArrayToFile(spaces, N, "text.txt");
-//			cout << "Об'єкти простору збереженi у файл 'text.txt'." << endl;
-//			break;
-//
-//		case 4:
-//			objects = Space::readObjectsFromFile("text.txt");
-//			cout << "Данi зчитані з файлу:" << endl;
-//			for (const auto& obj : objects) {
-//				Space temp = obj;
-//				temp.show();
-//			}
-//			break;
-//		case 5:
-//			cout << "Введіть індекс об'єкта простору для збереження (0-" << N - 1 << "): ";
-//			cin >> index;
-//			if (index >= 0 && index < N) {
-//				ofstream file("text.txt");
-//				if (file.is_open()) {
-//
-//					file << spaces[index].getSpectralClass() << " "
-//						<< spaces[index].getMass() << " "
-//						<< spaces[index].getPart() << " "
-//						<< spaces[index].getNum();
-//					file.close();
-//					cout << "Об'єкт простору з індексом " << index << " збережено у файл 'text.txt'." << endl;
-//				}
-//				else {
-//					cout << "Помилка відкриття файлу 'text.txt'." << endl;
-//				}
-//			}
-//			else {
-//				cout << "Неправильний індекс!" << endl;
-//			}
-//
-//			break;
-//		case 6:
-//			cout << "Введiть iндекс об'єкта простору для відображення (0-" << N - 1 << "): ";
-//			cin >> index;
-//			if (index >= 0 && index < N) {
-//				cout << "Данi для об'єкта простору " << index + 1 << ":" << endl;
-//				spaces[index].show();
-//			}
-//			else {
-//				cout << "Неправильний індекс!" << endl;
-//			}
-//			break;
-//		case 7:
-//			spaces[0].removeInfo("text.txt");
-//			break;
-//		case 8:
-//			exit(1);
-//			break;
-//		default:
-//			cout << "Incorrect choice" <<endl;
-//			break;
-//		}
-//		system("pause");
-//		system("cls");
-//	} while (true);
-//
-//}
+void COMP::read(ifstream& in) {
+	in >> r >> m;
+}
 
 void Starter::task1() {
 
@@ -464,6 +301,39 @@ void Starter::task1() {
 
 
 void Starter::task2() {
+	// Записати в текстовий файл парну кількість дійсних чисел.
+	ofstream outFile("realNumbers.txt");
+	for (int i = 0; i < 10; i++) {
+		outFile << static_cast<float>(i) << endl;
+	}
+	outFile.close();
+
+	// Прочитати з файлу дійсні числа.
+	vector<float> realNumbers;
+	ifstream inFile("realNumbers.txt");
+	float number;
+	while (inFile >> number) {
+		realNumbers.push_back(number);
+	}
+	inFile.close();
+
+	// Створити масив з об'єктів класу COMP.
+	vector<COMP> compNumbers;
+	for (size_t i = 0; i < realNumbers.size(); i += 2) {
+		compNumbers.push_back(COMP(realNumbers[i], realNumbers[i + 1]));
+	}
+
+	// Роздрукувати їх на екран
+	for (const auto& compNumber : compNumbers) {
+		cout << compNumber << endl;
+	}
+
+	// Зберегти в новий файл.
+	ofstream compFile("compNumbers.txt");
+	for (const auto& compNumber : compNumbers) {
+		compNumber.write(compFile);
+	}
+	compFile.close();
 
 }
 void Starter::task3() {
