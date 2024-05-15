@@ -16,7 +16,7 @@
 #define LOW_BOUND 1
 #define HIGH_BOUND 100
 #define INPUT_TYPE 2 // 1 - from console, 2 - random
-#define CHOOSE_TYPE 1 // 1 - work with .txt 2 - work binary
+#define CHOOSE_TYPE 2 // 1 - work with .txt 2 - work binary
 
 
 using namespace std;

@@ -26,7 +26,7 @@ void Space::showDown() {
 }
 
 void Space::saveArrayToFile(Space spaces[], int size, const string& filename) {
-	ofstream file(filename);
+	/*ofstream file(filename);
 	try
 	{
 		if (!file.is_open()) throw runtime_error("WARNING, THIS FILE IS NOT FOUND");
@@ -37,14 +37,31 @@ void Space::saveArrayToFile(Space spaces[], int size, const string& filename) {
 	}
 	catch (const exception& a){
 		cout << a.what();
+	}*/
+
+#if CHOOSE_TYPE == 1
+	ofstream file(filename);
+#else
+	ofstream file(filename, ios::binary);
+#endif
+	if (!file.is_open()) {
+		cout << "Помилка відкриття файлу!" << endl;
+		return;
 	}
+	for (int i = 0; i < size; i++) {
+#if CHOOSE_TYPE == 1
+		file << spaces[i].getSpectralClass() << " " << spaces[i].getMass() << " " << spaces[i].getPart() << " " << spaces[i].getNum() << endl;
+#else
+		file.write((const char*)&spaces[i], sizeof(Space));
+#endif
+	}
+	file.close();
 }
+
 void Space::removeInfo(const string& filename) {
 	ofstream clearFile(filename, ios::trunc);
 }
 void Space::saveObjectToFile(string& filename) {
-
-
 #if CHOOSE_TYPE == 1
 	ofstream file(filename, ios::app);
 #else
@@ -82,7 +99,7 @@ vector<Space> Space::readObjectsFromFile(const string& filename) {
 	long num;
 	while (file >> spectralClass >> mass >> part >> num) {
 		objects.push_back(Space{ spectralClass, mass, part, num });
-	}
+	
 #else
 	Space space;
 	while (file.read((char*)&space, sizeof(Space))) {
