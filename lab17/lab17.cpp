@@ -14,12 +14,12 @@ public:
     }
 };
 
-template<class T>
+template<class Sum>
 class Number {
 protected:
-    T value;
+    Sum value;
 public:
-    Number(T value): value(value){}
+    Number(Sum value): value(value){}
 
     void print() const {
         cout << value << endl;

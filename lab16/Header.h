@@ -16,6 +16,7 @@
 #define LOW_BOUND 1
 #define HIGH_BOUND 100
 #define INPUT_TYPE 2 // 1 - from console, 2 - random
+#define CHOOSE_TYPE 1 // 1 - work with .txt 2 - work binary
 
 
 using namespace std;
@@ -45,12 +46,12 @@ public:
 
 	void input();
 
+
 	void saveObjectToFile(const string& filename);
 	static void saveArrayToFile(Space spaces[], int size, const string& filename);
 	static vector<Space> readObjectsFromFile(const string& filename);
 	void removeInfo(const string& filename);
-
-	
+	static void saveOneObjectToFile(Space& space, const string& filename);
 
 	Space() : spectralClass('A'), mass(0), part(0), num(0) {};
 	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};

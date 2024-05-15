@@ -134,6 +134,7 @@
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="session.txt" />
     <Text Include="text.txt" />
     <Text Include="text2.txt" />
     <Text Include="text3.txt" />
