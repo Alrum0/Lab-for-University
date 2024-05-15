@@ -16,13 +16,60 @@ void Space::showUp() {
 	cout << "-----------------------------------------------------------------------------------" << endl;
 
 }
-void Space::show() {
+void Space::show(){
 	cout << "|" << setw(DISTANCE) << getSpectralClass() << "|" << setw(33) << getMass() << "|" << setw(13) << getPart() << "|" << setw(13) << getNum() << "|" << endl;
 	cout << "-----------------------------------------------------------------------------------" << endl;
 }
 void Space::showDown() {
 	cout << "|" << "                Примiтка: не показанi данi для класiв: B, A, G, K                " << "|"; cout << endl;
 	cout << "-----------------------------------------------------------------------------------" << endl;
+}
+void Space::saveObjectToFile(const string& filename) {
+	ofstream file(filename, ios::app);
+	try
+	{
+		if (!file.is_open()) throw 10;
+		file << spectralClass << " " << mass << " " << part << " " << num << endl;
+		file.close();
+	}
+	catch (int){
+		cout << "WARNING, THIS FILE IS NOT FIND!" << endl;
+	}
+}
+void Space::saveArrayToFile(Space spaces[], int size, const string& filename) {
+	ofstream file(filename);
+	try
+	{
+		if (!file.is_open()) throw runtime_error("WARNING, THIS FILE IS NOT FOUND");
+		for (int i = 0; i < size; i++) {
+			file << spaces[i].spectralClass << " " << spaces[i].mass << " " << spaces[i].part << " " << spaces[i].num << endl;
+		}
+		file.close();
+	}
+	catch (const exception& a){
+		cout << a.what();
+	}
+}
+vector<Space> Space::readObjectsFromFile(const string& filename) {
+	vector<Space> obj;
+	ifstream file(filename);
+	try {
+		if (!file.is_open()) throw runtime_error("WARNING, THIS FILE IS NOT FOUND");
+		char spectralClass;
+		float mass, part;
+		long num;
+		while (file >> spectralClass >> mass >> part >> num) {
+			obj.push_back(Space(spectralClass, mass, part, num));
+		}
+		file.close();
+		return obj;
+	}
+	catch (const exception& b){
+		 cout << b.what();
+	}
+}
+void Space::removeInfo(const string& filename) {
+	ofstream clearFile(filename, ios::trunc);
 }
 
 float COMP::getReal() const { return real; }
@@ -41,57 +88,167 @@ ostream& operator<<(ostream& os, const COMP& c) {
 
 
 void Starter::task1() {
+
 	Space spaces[N];
+	string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char spectralClass;
 	float mass, part;
 	long num;
+	vector<Space> objects;
+	vector<string> lines;
+	string line;
+	int index;
+	int ch;
+	
+	do {
+		cout << "\nMENU:" << endl;
+		cout << "1. Ввести данi для об'єкта" << endl;
+		cout << "2. Відобразити данi для об'єкта" << endl;
+		cout << "3. Зберегти всi об'єкти  у файл" << endl;
+		cout << "4. Зчитати всi об'єкти з файлу" << endl;
+		cout << "5. Зберегти один об'єкт у файл" << endl;
+		cout << "6. Вiдобразити один об'єкт з файлу" << endl;
+		cout << "7. Видалення вмiсту файлу" << endl;
+		cout << "8. Вихiд" << endl;
+		cout << "Виберiть пункт меню: ";
+		cin >> ch;
 
-	srand(time(NULL));
-
-
-	for (int i = 0; i < N; i++) {
+		switch (ch) {
+		case 1:
+			for (int i = 0; i < N; i++) {
 #if INPUT_TYPE == 1
-		cout << "Введiть спектральний клас: ";
-		cin >> spectralClass;
-		cout << "Введiть масу: ";
-		cin >> mass;
-		cout << "Введiть частку: ";
-		cin >> part;
-		cout << "Введiть кiлькiсть: ";
-		cin >> num;
+				cout << "Введiть спектральний клас: ";
+				cin >> spectralClass;
+				cout << "Введiть масу: ";
+				cin >> mass;
+				cout << "Введiть частку: ";
+				cin >> part;
+				cout << "Введiть кiлькiсть: ";
+				cin >> num;
 
 #elif INPUT_TYPE == 2
-		spectralClass = letters[rand() % letters.size() + 1];
-		mass = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
-		part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
-		num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+				spectralClass = letters[rand() % letters.size() + 1];
+				mass = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+				part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+				num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
 #endif				
 
 #if	USE_CONSTRUCTOR == 1
-		//using default constructor
-		spaces[i].setSpectralClass(spectralClass);
-		spaces[i].setMass(mass);
-		spaces[i].setPart(part);
-		spaces[i].setNum(num);
+				//using default constructor
+				spaces[i].setSpectralClass(spectralClass);
+				spaces[i].setMass(mass);
+				spaces[i].setPart(part);
+				spaces[i].setNum(num);
 #elif USE_CONSTRUCTOR == 2
-		// using constructor with arguments
-		spaces[i] = { spectralClass, mass, part, num };
+				// using constructor with arguments
+				spaces[i] = { spectralClass, mass, part, num };
 
 #elif USE_CONSTRUCTOR == 3
-		// using constructor of copy
-		Space tempSpace(spectralClass, mass, part, num);
-		Space space(&tempSpace);
-		spaces[i] = space;
+				// using constructor of copy
+				Space tempSpace(spectralClass, mass, part, num);
+				Space space(&tempSpace);
+				spaces[i] = space;
 #endif
-	}
 
-	spaces[0].showUp();
+				spaces[i].saveObjectToFile("text.txt");
+			}
+			break;
+		case 2:
+			for (int i = 0; i < N; i++) {
+				cout << "Данi для об'єкта простору " << i + 1 << ":" << endl;
+				spaces[i].show();
+			}
+			break;
+		case 3:
+			Space::saveArrayToFile(spaces, N, "text.txt");
+			cout << "Об'єкти простору збереженi у файл 'text.txt'." << endl;
+			break;
+		case 4:
+			objects = Space::readObjectsFromFile("text.txt");
+			cout << "Данi зчитані з файлу:" << endl;
+			for (const auto& obj : objects) {
+				Space temp = obj;
+				temp.show();
+			}
+			break;
+		case 5:
+			cout << "Введіть індекс об'єкта простору для збереження (0-" << N - 1 << "): ";
+			cin >> index;
+			if (index >= 0 && index < N) {
+				ofstream file("text.txt"); // відкриваємо файл у режимі запису
+				if (file.is_open()) {
+					// записуємо дані об'єкта у файл, використовуючи методи доступу
+					file << spaces[index].getSpectralClass() << " "
+						<< spaces[index].getMass() << " "
+						<< spaces[index].getPart() << " "
+						<< spaces[index].getNum();
+					file.close(); // закриваємо файл
+					cout << "Об'єкт простору з індексом " << index << " збережено у файл 'text.txt'." << endl;
+				}
+				else {
+					cout << "Помилка відкриття файлу 'text.txt'." << endl;
+				}
+			}
+			else {
+				cout << "Неправильний індекс!" << endl;
+			}
+			break;
 
-	for (int i = 0; i < N; i++) {
-		spaces[i].show();
-	}
+			//	spaces[index].saveObjectToFile("text.txt");
+			//	cout << "Об'єкт простору з індексом " << index << " збережено у файл 'text.txt'." << endl;
 
-	spaces[0].showDown();
+			//	fstream file("text.txt", ios::out);
+			//	if (file) {
+			//		file.seekp(index * sizeof(Space)); // Переміщаємо вказівник до потрібного об'єкта
+			//		for (int i = index + 1; i < N; ++i) {
+			//			Space emptySpace; // Створюємо пустий об'єкт Space
+			//			file.write(reinterpret_cast<char*>(&emptySpace), sizeof(Space)); // Записуємо пустий об'єкт у файл
+			//		}
+			//		file.close();
+			//}
+			//else {
+			//	cout << "Неправильний індекс!" << endl;
+			//}
+			break;
+		case 6:
+			cout << "Введiть iндекс об'єкта простору для відображення (0-" << N - 1 << "): ";
+			cin >> index;
+			if (index >= 0 && index < N) {
+				cout << "Данi для об'єкта простору " << index + 1 << ":" << endl;
+				spaces[index].show();
+			}
+			else {
+				cout << "Неправильний індекс!" << endl;
+			}
+			break;
+		case 7:
+			spaces[0].removeInfo("text.txt");
+			break;
+		case 8:
+			exit(1);
+			break;
+		default:
+			cout << "Incorrect choice" <<endl;
+			break;
+		}
+		system("pause");
+		system("cls");
+	} while (true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 void Starter::task2() {
 
@@ -109,7 +266,8 @@ void Starter::task3() {
 
 		fout.close();
 
-		fout.open("text3.txt", ios::binary | ios::in); throw 10;
+		fout.open("text3.txt", ios::binary | ios::in);
+		if (!fout.is_open()) throw 10;
 		fout.seekg(4 * sizeof(int));
 		int fifthNumber;
 		fout.read((char*)&fifthNumber, sizeof(int));
@@ -125,7 +283,8 @@ void Starter::task3() {
 
 		fout.close();
 
-		fout.open("text3.txt", ios::binary | ios::out | ios::in); throw 10;
+		fout.open("text3.txt", ios::binary | ios::out | ios::in);
+		if (!fout.is_open()) throw 10;
 		if (fifthNumber % 2 == 0) {
 			int newNumber = 77;
 			fout.seekp(0, ios::beg);
@@ -142,7 +301,8 @@ void Starter::task3() {
 		}
 		fout.close();
 
-		fout.open("text3.txt", ios::binary | ios::in); throw 10;
+		fout.open("text3.txt", ios::binary | ios::in);
+		if (!fout.is_open()) throw 10;
 		cout << "Оновленi 10 чисел: " << endl;
 		while (fout.read((char*)&number, sizeof(int))) {
 			cout << number << setw(5);

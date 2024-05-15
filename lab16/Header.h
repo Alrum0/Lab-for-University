@@ -6,6 +6,8 @@
 #include <iostream>
 #include <Windows.h>
 #include <fstream>
+#include <string>
+#include <vector>
 
 #define DISTANCE 19
 #define N 3
@@ -13,7 +15,7 @@
 #define USE_CONSTRUCTOR 1 // 1 - default, 2 - constructor with arguments 3 - constructor of copy
 #define LOW_BOUND 1
 #define HIGH_BOUND 100
-#define INPUT_TYPE 1 // 1 - from console, 2 - random
+#define INPUT_TYPE 2 // 1 - from console, 2 - random
 
 
 using namespace std;
@@ -43,11 +45,17 @@ public:
 
 	void input();
 
-	/*Space();*/
+	void saveObjectToFile(const string& filename);
+	static void saveArrayToFile(Space spaces[], int size, const string& filename);
+	static vector<Space> readObjectsFromFile(const string& filename);
+	void removeInfo(const string& filename);
+
+	
 
 	Space() : spectralClass('A'), mass(0), part(0), num(0) {};
 	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};
 	Space(const Space& other) : spectralClass(other.spectralClass), mass(other.mass), part(other.part), num(other.num) {};
+
 };
 
 
