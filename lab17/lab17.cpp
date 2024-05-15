@@ -2,48 +2,48 @@
 
 using namespace std;
 
-template<class Type1, class Type2>
-class Str {
-protected:
-    Type1 a;
-    Type2 b;
-public:
-    Str(Type1 a, Type2 b) : a(a), b(b){}
-    void show() {
-        cout << a << " " << b << endl;
-    }
-};
 
-template<class Sum>
+
+#include <iostream>
+
+using namespace std;
+
+template<class T>
 class Number {
 protected:
-    Sum value;
+    T value;
 public:
-    Number(Sum value): value(value){}
-
+    Number(T value) : value(value) {}
     void print() const {
         cout << value << endl;
     }
     Number operator+(const Number& other) const {
         return Number(value + other.value);
     }
+    friend ostream& operator<<(ostream& os, const Number<T>& num) {
+        os << num.value;
+        return os;
+    }
 };
 
+int main() {
+    setlocale(LC_ALL, "ukr"); 
 
-int main(){
     Number<int> intNumber(5);
     Number<int> intNumber2(10);
-    Number<float> floatNumber(5.5);
-    Number<float> floatNumber2(4.4);
 
+    cout << "Додавання цiлих чисел" << endl;
     Number<int> sumIntNum = intNumber + intNumber2;
-    sumIntNum.print();
+    cout << "Number 1 + Number 2 = " << intNumber << " + " << intNumber2 << " = " << sumIntNum << endl;
 
+    Number<float> floatNumber(5.3);
+    Number<float> floatNumber2(3.5);
+
+    cout << "Додавання дiйсних чисел" << endl;
     Number<float> sumFloatNum = floatNumber + floatNumber2;
-    sumFloatNum.print();
+    cout << "Number 1 + Number 2 = " << floatNumber << " + " << floatNumber2 << " = " << sumIntNum << endl;
 
-    cout << "__________________________________________" << endl;
-    Str<char, string> obj('F', "WARNING");
-    obj.show();
+    return 0;
 }
+
 

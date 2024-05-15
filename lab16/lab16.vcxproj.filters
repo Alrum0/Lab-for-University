@@ -28,9 +28,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="text.txt" />
     <Text Include="text2.txt" />
     <Text Include="text3.txt" />
-    <Text Include="session.txt" />
   </ItemGroup>
 </Project>

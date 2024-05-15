@@ -10,7 +10,7 @@
 #include <vector>
 
 #define DISTANCE 19
-#define N 3
+#define N 10
 #define CHOISE 2
 #define USE_CONSTRUCTOR 1 // 1 - default, 2 - constructor with arguments 3 - constructor of copy
 #define LOW_BOUND 1
@@ -47,11 +47,11 @@ public:
 	void input();
 
 
-	void saveObjectToFile(const string& filename);
+	static void saveObjectToFile(const string& filename);
 	static void saveArrayToFile(Space spaces[], int size, const string& filename);
 	static vector<Space> readObjectsFromFile(const string& filename);
 	void removeInfo(const string& filename);
-	static void saveOneObjectToFile(Space& space, const string& filename);
+	void saveObjectToFile(string& filename);
 
 	Space() : spectralClass('A'), mass(0), part(0), num(0) {};
 	Space(char spectralClass, float mass, float part, long num) : spectralClass(spectralClass), mass(mass), part(part), num(num) {};

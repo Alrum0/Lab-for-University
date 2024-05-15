@@ -25,18 +25,6 @@ void Space::showDown() {
 	cout << "-----------------------------------------------------------------------------------" << endl;
 }
 
-//void Space::saveObjectToFile(const string& filename) {
-//	ofstream file(filename, ios::app);
-//	try
-//	{
-//		if (!file.is_open()) throw 10;
-//		file << spectralClass << " " << mass << " " << part << " " << num << endl;
-//		file.close();
-//	}
-//	catch (int){
-//		cout << "WARNING, THIS FILE IS NOT FIND!" << endl;
-//	}
-//}
 void Space::saveArrayToFile(Space spaces[], int size, const string& filename) {
 	ofstream file(filename);
 	try
@@ -51,36 +39,11 @@ void Space::saveArrayToFile(Space spaces[], int size, const string& filename) {
 		cout << a.what();
 	}
 }
-//vector<Space> Space::readObjectsFromFile(const string& filename) {
-//	vector<Space> obj;
-//	ifstream file(filename);
-//	try {
-//		if (!file.is_open()) throw runtime_error("WARNING, THIS FILE IS NOT FOUND");
-//		char spectralClass;
-//		float mass, part;
-//		long num;
-//		while (file >> spectralClass >> mass >> part >> num) {
-//			obj.push_back(Space(spectralClass, mass, part, num));
-//		}
-//		file.close();
-//		return obj;
-//	}
-//	catch (const exception& b){
-//		 cout << b.what();
-//	}
-//}
 void Space::removeInfo(const string& filename) {
 	ofstream clearFile(filename, ios::trunc);
 }
+void Space::saveObjectToFile(string& filename) {
 
-void Space::saveObjectToFile(const string& filename) {
-	/*ofstream file(filename, ios::binary);
-	if (!file.is_open()) {
-		cout << "Помилка!" << endl;
-		return;
-	}
-	file.write(reinterpret_cast<const char*>(this), sizeof(Space));
-	file.close();*/
 
 #if CHOOSE_TYPE == 1
 	ofstream file(filename, ios::app);
@@ -102,19 +65,7 @@ void Space::saveObjectToFile(const string& filename) {
 
 
 vector<Space> Space::readObjectsFromFile(const string& filename) {
-	/*vector<Space> objects;
-	ifstream file(filename, ios::binary);
-	if (!file.is_open()) {
-		cout << "Error opening file!" << endl;
-		return objects;
-	}
-	Space space;
-	while (file.read(reinterpret_cast<char*>(&space), sizeof(Space))) {
-		objects.push_back(space);
-	}
-	file.close();
-	return objects;*/
-
+	
 	vector<Space> objects;
 #if CHOOSE_TYPE == 1
 	ifstream file(filename);
@@ -175,6 +126,154 @@ ostream& operator<<(ostream& os, const COMP& c) {
 
 
 
+//void Starter::task1() {
+//
+//	Space spaces[N];
+//	string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//	char spectralClass;
+//	float mass, part;
+//	long num;
+//	vector<Space> objects;
+//	vector<string> lines;
+//	string line;
+//	int index;
+//	int ch;
+//	bool tableCreated = false;
+//
+//
+//	do {
+//		cout << "\nMENU:" << endl;
+//		cout << "1. Ввести рядкi для таблицi" << endl;
+//		cout << "2. Вивести рядкi таблицi" << endl;
+//		cout << "3. Зберегти рядки таблицi в файл" << endl;
+//		cout << "4. Вивести всi рядки таблицi з файлу" << endl;
+//		cout << "5. Зберегти один рядок таблицi в файл" << endl;
+//		cout << "6. Вивести один рядок таблицi з файлу" << endl;
+//		cout << "7. Видалення вмiсту файлу" << endl;
+//		cout << "8. Вихiд" << endl;
+//		cout << "Виберiть пункт меню: ";
+//		cin >> ch;
+//
+//		switch (ch) {
+//		case 1:
+//			if (!tableCreated) {
+//				for (int i = 0; i < N; i++) {
+//#if INPUT_TYPE == 1
+//					cout << "Введiть спектральний клас: ";
+//					cin >> spectralClass;
+//					cout << "Введiть масу: ";
+//					cin >> mass;
+//					cout << "Введiть частку: ";
+//					cin >> part;
+//					cout << "Введiть кiлькiсть: ";
+//					cin >> num;
+//
+//#elif INPUT_TYPE == 2
+//					spectralClass = letters[rand() % letters.size() + 1];
+//					mass = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+//					part = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+//					num = rand() % (HIGH_BOUND - LOW_BOUND + 1) + LOW_BOUND;
+//#endif				
+//
+//#if	USE_CONSTRUCTOR == 1
+//					//using default constructor
+//					spaces[i].setSpectralClass(spectralClass);
+//					spaces[i].setMass(mass);
+//					spaces[i].setPart(part);
+//					spaces[i].setNum(num);
+//#elif USE_CONSTRUCTOR == 2
+//					// using constructor with arguments
+//					spaces[i] = { spectralClass, mass, part, num };
+//
+//#elif USE_CONSTRUCTOR == 3
+//					// using constructor of copy
+//					Space tempSpace(spectralClass, mass, part, num);
+//					Space space(&tempSpace);
+//					spaces[i] = space;
+//#endif
+//
+//				}
+//				tableCreated = true;
+//				cout << "Таблиця усрiшно створена!";
+//			}
+//			else {
+//				cout << "Таблиця вже створена!" << endl;
+//			}
+//			break;
+//		case 2:
+//			spaces[0].showUp();
+//			for (int i = 0; i < N; i++) {
+//				spaces[i].show();
+//			}
+//			spaces[0].showDown();
+//			break;
+//		case 3:
+//			if (!tableCreated) {
+//				cout << "Таблиця не була створена!" << endl;
+//				break;
+//			}
+//			Space::saveArrayToFile(spaces, N, "text.txt");
+//			cout << "Об'єкти простору збереженi у файл 'text.txt'." << endl;
+//			break;
+//
+//		case 4:
+//			objects = Space::readObjectsFromFile("text.txt");
+//			cout << "Данi зчитані з файлу:" << endl;
+//			for (const auto& obj : objects) {
+//				Space temp = obj;
+//				temp.show();
+//			}
+//			break;
+//		case 5:
+//			cout << "Введіть індекс об'єкта простору для збереження (0-" << N - 1 << "): ";
+//			cin >> index;
+//			if (index >= 0 && index < N) {
+//				ofstream file("text.txt");
+//				if (file.is_open()) {
+//
+//					file << spaces[index].getSpectralClass() << " "
+//						<< spaces[index].getMass() << " "
+//						<< spaces[index].getPart() << " "
+//						<< spaces[index].getNum();
+//					file.close();
+//					cout << "Об'єкт простору з індексом " << index << " збережено у файл 'text.txt'." << endl;
+//				}
+//				else {
+//					cout << "Помилка відкриття файлу 'text.txt'." << endl;
+//				}
+//			}
+//			else {
+//				cout << "Неправильний індекс!" << endl;
+//			}
+//
+//			break;
+//		case 6:
+//			cout << "Введiть iндекс об'єкта простору для відображення (0-" << N - 1 << "): ";
+//			cin >> index;
+//			if (index >= 0 && index < N) {
+//				cout << "Данi для об'єкта простору " << index + 1 << ":" << endl;
+//				spaces[index].show();
+//			}
+//			else {
+//				cout << "Неправильний індекс!" << endl;
+//			}
+//			break;
+//		case 7:
+//			spaces[0].removeInfo("text.txt");
+//			break;
+//		case 8:
+//			exit(1);
+//			break;
+//		default:
+//			cout << "Incorrect choice" <<endl;
+//			break;
+//		}
+//		system("pause");
+//		system("cls");
+//	} while (true);
+//
+//}
+
 void Starter::task1() {
 
 	Space spaces[N];
@@ -187,17 +286,18 @@ void Starter::task1() {
 	string line;
 	int index;
 	int ch;
-	bool tableCreatede = false;
-
+	bool tableCreated = false;
+	bool tableDisplayed = false;
+	bool tableSaved = false;
 
 	do {
 		cout << "\nMENU:" << endl;
-		cout << "1. Ввести данi для об'єкта" << endl;
-		cout << "2. Відобразити данi для об'єкта" << endl;
-		cout << "3. Зберегти всi об'єкти  у файл" << endl;
-		cout << "4. Зчитати всi об'єкти з файлу" << endl;
-		cout << "5. Зберегти один об'єкт у файл" << endl;
-		cout << "6. Вiдобразити один об'єкт з файлу" << endl;
+		cout << "1. Ввести рядкi для таблицi" << endl;
+		cout << "2. Вивести рядкi таблицi" << endl;
+		cout << "3. Зберегти рядки таблицi в файл" << endl;
+		cout << "4. Вивести всi рядки таблицi з файлу" << endl;
+		cout << "5. Зберегти один рядок таблицi в файл" << endl;
+		cout << "6. Вивести один рядок таблицi з файлу" << endl;
 		cout << "7. Видалення вмiсту файлу" << endl;
 		cout << "8. Вихiд" << endl;
 		cout << "Виберiть пункт меню: ";
@@ -205,7 +305,7 @@ void Starter::task1() {
 
 		switch (ch) {
 		case 1:
-			if (!tableCreatede) {
+			if (!tableCreated) {
 				for (int i = 0; i < N; i++) {
 #if INPUT_TYPE == 1
 					cout << "Введiть спектральний клас: ";
@@ -241,81 +341,92 @@ void Starter::task1() {
 					spaces[i] = space;
 #endif
 
-					spaces[i].saveObjectToFile("text.txt");
-				}
-				tableCreatede = true;
-			}
+		}
+				tableCreated = true;
+				cout << "Таблиця усрiшно створена!";
+	}
 			else {
 				cout << "Таблиця вже створена!" << endl;
 			}
 			break;
 		case 2:
+			if (!tableCreated) {
+				cout << "Таблиця не була створена!" << endl;
+				break;
+			}
+			spaces[0].showUp();
 			for (int i = 0; i < N; i++) {
-				cout << "Данi для об'єкта простору " << i + 1 << ":" << endl;
 				spaces[i].show();
 			}
+			spaces[0].showDown();
+			tableDisplayed = true;
 			break;
 		case 3:
+			if (!tableDisplayed) {
+				cout << "Таблиця не була відображена!" << endl;
+				break;
+			}
 			Space::saveArrayToFile(spaces, N, "text.txt");
-			cout << "Об'єкти простору збереженi у файл 'text.txt'." << endl;
+			cout << "Рядки таблицi збереженi у файл 'text.txt'." << endl;
+			tableSaved = true;
 			break;
 
 		case 4:
+			if (!tableSaved) {
+				cout << "Таблиця не була збережена!" << endl;
+				break;
+			}
 			objects = Space::readObjectsFromFile("text.txt");
-			cout << "Данi зчитані з файлу:" << endl;
+			cout << "Данi зчитанi з файлу:" << endl;
+			objects[0].showUp();
 			for (const auto& obj : objects) {
 				Space temp = obj;
 				temp.show();
 			}
+			objects[0].showDown();
 			break;
 		case 5:
-			cout << "Введіть індекс об'єкта простору для збереження (0-" << N - 1 << "): ";
+			cout << "Введiть рядок таблицi для збереження (1-" << N << "): ";
 			cin >> index;
+			index--; 
 			if (index >= 0 && index < N) {
-				ofstream file("text.txt"); 
+				ofstream file("text.txt");
 				if (file.is_open()) {
-					
+
 					file << spaces[index].getSpectralClass() << " "
 						<< spaces[index].getMass() << " "
 						<< spaces[index].getPart() << " "
 						<< spaces[index].getNum();
 					file.close();
-					cout << "Об'єкт простору з індексом " << index << " збережено у файл 'text.txt'." << endl;
+					cout << "Рядок з номеромером: " << index + 1 << " збережено у файл 'text.txt'." << endl;
 				}
 				else {
-					cout << "Помилка відкриття файлу 'text.txt'." << endl;
+					cout << "Помилка вiдкриття файлу 'text.txt'." << endl;
 				}
 			}
 			else {
-				cout << "Неправильний індекс!" << endl;
+				cout << "Неправильний номер!" << endl;
 			}
-
+			tableSaved = true;
 			break;
-
-			//	spaces[index].saveObjectToFile("text.txt");
-			//	cout << "Об'єкт простору з індексом " << index << " збережено у файл 'text.txt'." << endl;
-
-			//	fstream file("text.txt", ios::out);
-			//	if (file) {
-			//		file.seekp(index * sizeof(Space)); // Переміщаємо вказівник до потрібного об'єкта
-			//		for (int i = index + 1; i < N; ++i) {
-			//			Space emptySpace; // Створюємо пустий об'єкт Space
-			//			file.write(reinterpret_cast<char*>(&emptySpace), sizeof(Space)); // Записуємо пустий об'єкт у файл
-			//		}
-			//		file.close();
-			//}
-			//else {
-			//	cout << "Неправильний індекс!" << endl;
-			//}
 		case 6:
-			cout << "Введiть iндекс об'єкта простору для відображення (0-" << N - 1 << "): ";
+			if (!tableSaved) {
+				cout << "Таблиця не була збережена!" << endl;
+				break;
+			}
+			cout << "Введiть номер рядка таблицi для вiдображення (1-" << N << "): ";
 			cin >> index;
-			if (index >= 0 && index < N) {
-				cout << "Данi для об'єкта простору " << index + 1 << ":" << endl;
-				spaces[index].show();
+			index--; 
+			
+			objects = Space::readObjectsFromFile("text.txt");
+
+			if (index >= 0 && index < objects.size()) {
+				objects[0].showUp();
+				objects[index].show();
+				objects[0].showDown();
 			}
 			else {
-				cout << "Неправильний індекс!" << endl;
+				cout << "Неправильний номер!" << endl;
 			}
 			break;
 		case 7:
@@ -325,14 +436,16 @@ void Starter::task1() {
 			exit(1);
 			break;
 		default:
-			cout << "Incorrect choice" <<endl;
+			cout << "Неправильний вибiр!" << endl;
 			break;
-		}
+}
 		system("pause");
 		system("cls");
 	} while (true);
 
 }
+
+
 void Starter::task2() {
 
 }
