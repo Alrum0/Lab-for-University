@@ -19,8 +19,7 @@ public:
         return first < other.first;
     }
 
-    void get() const {
-        
+    void get() const { 
         cout << setw(14) << left << first << " |" << setw(14) << left << second << "  |";
     }
 };
@@ -54,7 +53,6 @@ void printList(const map<NAME, NUMBER>& phonebook) {
 void searchByName(const map<NAME, NUMBER>& phonebook, const string& name) {
     bool found = false;
     for (const auto& entry : phonebook) {
-        
         if (entry.first.first == name) {
             printList({ {entry.first, entry.second} });
             found = true;
@@ -70,7 +68,6 @@ void searchByFirstLetter(const map<NAME, NUMBER>& phonebook, char letter) {
     bool found = false;
     map<NAME, NUMBER> filtered;
     for (const auto& entry : phonebook) {
-       
         if (entry.first.second[0] == letter) {
             filtered.insert(entry);
             found = true;
@@ -95,7 +92,7 @@ void deleteByFirstLetter(map<NAME, NUMBER>& phonebook, char letter) {
             it++;
         }
     }
-    if (!false) {
+    if (!found) {
         cout << "Немає прiзвищ, що починаються на букву " << letter << "." << endl;
     }
     else {
@@ -136,7 +133,7 @@ public:
             cout << "1. Вивести список" << endl;
             cout << "2. Пошук по iменi" << endl;
             cout << "3. Шукати по першiй буквi прiзвища" << endl;
-            cout << "4. Видалити всiх на пергу букву прiзвища" << endl;
+            cout << "4. Видалити всiх на першу букву прiзвища" << endl;
             cout << "5. Створити новий список" << endl;
             cout << "6. Вийти" << endl;
             cout << "Ваш вибiр: ";
