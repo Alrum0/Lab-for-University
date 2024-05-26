@@ -29,19 +29,19 @@ public:
 int main() {
     setlocale(LC_ALL, "ukr"); 
 
-    Number<int> intNumber(5);
-    Number<int> intNumber2(10);
+    Number<int> intNumber(525);
+    Number<int> intNumber2(475);
 
     cout << "Додавання цiлих чисел" << endl;
     Number<int> sumIntNum = intNumber + intNumber2;
     cout << "Number 1 + Number 2 = " << intNumber << " + " << intNumber2 << " = " << sumIntNum << endl;
 
-    Number<float> floatNumber(5.3);
-    Number<float> floatNumber2(3.5);
+    Number<float> floatNumber(18.33);
+    Number<float> floatNumber2(12.771);
 
     cout << "Додавання дiйсних чисел" << endl;
-    Number<float> sumFloatNum = floatNumber + floatNumber2;
-    cout << "Number 1 + Number 2 = " << floatNumber << " + " << floatNumber2 << " = " << sumIntNum << endl;
+    Number<float> floatFloatNum = floatNumber + floatNumber2;
+    cout << "Number 1 + Number 2 = " << floatNumber << " + " << floatNumber2 << " = " << floatFloatNum << endl;
 
     return 0;
 }

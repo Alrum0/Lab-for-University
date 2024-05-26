@@ -6,6 +6,9 @@
 #include <ctime>
 #include <vector>
 
+#define MAX_BOUND 10
+#define LOW_BOUND 5
+
 using namespace std;
 
 class NAME {
@@ -109,8 +112,10 @@ string randomPhoneNumber() {
 }
 
 map<NAME, NUMBER> generateRandomPhonebook(size_t size) {
-    vector<string> firstNames = { "John", "Jane", "Alice", "Bob", "Michael" };
-    vector<string> lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones" };
+    vector<string> firstNames = { "John", "Jane", "Alice", "Bob", "Michael", "Emma", "Oliver", "Sophia", "Liam", "Ava", "Noah", "Isabella", "Lucas", "Mia", "Ethan", "Charlotte", "Aiden", "Amelia", "Benjamin", "Harper",
+                                  "Grace", "Elijah", "Madison", "Logan", "Ella", "Jacob", "Lily", "Mason", "Addison", "James", "Avery", "Evelyn", "Daniel", "Riley", "David", "Victoria", "Joseph", "Natalie", "Samuel", "Zoe" };
+    vector<string> lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson",
+                                 "King", "Wright", "Lopez", "Hill", "Scott", "Green", "Adams", "Baker", "Gonzalez", "Nelson", "Carter", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards" };
 
     map<NAME, NUMBER> phonebook;
     for (size_t i = 0; i < size; ++i) {
@@ -142,7 +147,7 @@ public:
             switch (choice) {
             case 1:
                 if (!isGenerated) {
-                    phonebook = generateRandomPhonebook(rand() % 10 + 1); // √енеруЇмо в≥д 1 до 5 запис≥в
+                    phonebook = generateRandomPhonebook(rand() % (MAX_BOUND - LOW_BOUND + 1) + LOW_BOUND);
                     isGenerated = true;
                 }
                 printList(phonebook);
@@ -169,7 +174,7 @@ public:
                 break;
             }
             case 5:
-                phonebook = generateRandomPhonebook(rand() % 10 + 1); 
+                phonebook = generateRandomPhonebook(rand() % (MAX_BOUND - LOW_BOUND + 1) + LOW_BOUND);
                 isGenerated = true;
                 break;
             case 6:
