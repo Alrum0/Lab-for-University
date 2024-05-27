@@ -13,7 +13,7 @@ T my_min(T a, T b) {
 
 template <typename T>
 void my_sort(vector<T>& arr) {
-    sort(arr.begin(), arr.end());
+    sort(arr.begin(), arr.end()); //greater<T>()
 }
 
 
@@ -32,13 +32,14 @@ void runTests() {
 
     assert(my_min(3, 5) == 3);          // assert(my_min(3, 5) == 5); // Це повинно викликати помилку
     assert(my_min(-2, -5) == -5);
-    assert(my_min(53, -5) == -5);
+    assert(my_min(3.3, 2.2) == 2.2);
     assert(my_min('a', 'b') == 'a');   
 
-    vector<int> unsorted = { 5, 3, 8, 1, 2 }; // vector<int> unsorted = { 5, 3, 9, 1, 2 }; // Це повинно викликати помилку
+    vector<int> unsorted = { 5, 3, 8, 1, 2 };        
     vector<int> sorted = { 1, 2, 3, 5, 8 };
     my_sort(unsorted);
     assert(unsorted == sorted);
+    
 
 
     vector<int> arr = { 1, -2, 3, 4, -5 };
